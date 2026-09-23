@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* Fixed Navigation Header */
+        /* Fixed Header */
         header {
             position: fixed;
             top: 0;
@@ -36,30 +36,34 @@
             align-items: center;
             padding: 15px 50px;
             z-index: 1000;
-            border-bottom: 2px solid #585A8A;
+            border-bottom: 1px solid rgba(88, 90, 138, 0.3);
         }
 
         .logo-container {
             display: flex;
             align-items: center;
+            flex: 1;
         }
 
         .logo-container img {
-            height: 45px;
+            height: 40px;
             width: auto;
         }
 
+        /* Center navigation items */
         nav {
             display: flex;
-            gap: 25px;
+            gap: 30px;
             align-items: center;
+            justify-content: center;
+            flex: 2;
         }
 
         nav a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
 
@@ -67,10 +71,16 @@
             color: #585A8A;
         }
 
-        /* Hero Section */
-        .hero {
+        .header-spacer {
+            flex: 1;
+        }
+
+        /* Hero Section with Bottom Gradient Overlay */
+        .hero-container {
+            position: relative;
+            width: 100%;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('hero-bg.jpg') center/cover no-repeat;
+            background: url('hero-bg.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -78,6 +88,23 @@
             text-align: center;
             padding: 0 20px;
             margin-top: 60px;
+        }
+
+        /* Dark overlay + Smooth Bottom Gradient Transition */
+        .hero-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 60%, #000000 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -88,7 +115,7 @@
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 400;
             color: #d1d1d1;
             margin-bottom: 30px;
@@ -130,7 +157,7 @@
 
         /* Stats Section */
         .stats-section {
-            padding: 80px 20px;
+            padding: 60px 20px 80px 20px;
             background-color: #000000;
             text-align: center;
         }
@@ -145,41 +172,41 @@
         .stats-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
         .stat-card {
-            background-color: #0e0e14;
-            border: 2px solid #585A8A;
+            background-color: #0b0c10;
+            border: 1px solid rgba(88, 90, 138, 0.4);
             border-radius: 12px;
-            padding: 40px 30px;
-            min-width: 260px;
+            padding: 35px 40px;
+            min-width: 240px;
             transition: border-color 0.3s ease;
         }
 
         .stat-card:hover {
-            border-color: #ffffff;
+            border-color: #585A8A;
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: 800;
             color: #585A8A;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: block;
         }
 
         .stat-label {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #ffffff;
         }
 
-        /* Why Choose Us Section */
+        /* Features Section (Styled as per image reference) */
         .features-section {
             padding: 80px 20px;
-            background-color: #07070a;
+            background-color: #000000;
             text-align: center;
         }
 
@@ -192,45 +219,133 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .feature-card {
-            background-color: #000000;
-            border: 1px solid #585A8A;
-            border-radius: 12px;
-            padding: 30px 25px;
+            background-color: #0b0c10;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 35px 30px;
             text-align: left;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: #ffffff;
+            transform: translateY(-4px);
+            border-color: #585A8A;
+        }
+
+        .icon-box {
+            width: 42px;
+            height: 42px;
+            background-color: rgba(88, 90, 138, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-box svg {
+            width: 22px;
+            height: 22px;
+            stroke: #585A8A;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: #585A8A;
-            margin-bottom: 15px;
+            color: #ffffff;
+            margin-bottom: 12px;
         }
 
         .feature-card p {
             font-size: 0.95rem;
             line-height: 1.6;
-            color: #cccccc;
+            color: #9aa0a6;
             font-weight: 400;
         }
 
-        /* Footer */
+        /* Footer (Styled as per image reference) */
         footer {
             background-color: #000000;
-            border-top: 1px solid #585A8A;
-            padding: 40px 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 60px 80px 30px 80px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-brand-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand-header img {
+            height: 35px;
+        }
+
+        .footer-brand-header span {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        .footer-brand p {
+            color: #9aa0a6;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .footer-links-column h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .footer-links-column ul {
+            list-style: none;
+        }
+
+        .footer-links-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links-column ul li a {
+            color: #9aa0a6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links-column ul li a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -238,38 +353,42 @@
             gap: 20px;
         }
 
-        .footer-logo img {
-            height: 40px;
+        .footer-bottom p {
+            color: #9aa0a6;
+            font-size: 0.85rem;
         }
 
-        .footer-links {
+        .footer-bottom-links {
             display: flex;
             gap: 20px;
         }
 
-        .footer-links a {
-            color: #ffffff;
+        .footer-bottom-links a {
+            color: #9aa0a6;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 0.85rem;
             transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: #585A8A;
+        .footer-bottom-links a:hover {
+            color: #ffffff;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
                 padding: 15px 20px;
+            }
+            nav {
+                gap: 15px;
+            }
+            .header-spacer {
+                display: none;
             }
             .hero h1 {
                 font-size: 2.5rem;
             }
             footer {
-                flex-direction: column;
-                text-align: center;
+                padding: 40px 20px 20px 20px;
             }
         }
     </style>
@@ -282,21 +401,24 @@
             <img src="logo.png" alt="SeaMart Corporation Logo">
         </div>
         <nav>
-            <a href="#">Information</a>
-            <a href="#">Careers</a>
-            <a href="#">Staff Portal</a>
+            <a href="information.html">Information</a>
+            <a href="careers.html">Careers</a>
+            <a href="staff-portal.html">Staff Portal</a>
         </nav>
+        <div class="header-spacer"></div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to SeaMart!</h1>
-        <p>Roblox shopping experience</p>
-        <div class="btn-group">
-            <a href="https://www.roblox.com/games/111568286587895/SeaMart-Shopping" class="btn btn-gradient" target="_blank">Play Now</a>
-            <a href="https://www.roblox.com/communities/33359843/SeaMart-Corporation#!/about" class="btn btn-outline" target="_blank">Join Group</a>
+    <div class="hero-container hero">
+        <div class="hero-content">
+            <h1>Welcome to SeaMart!</h1>
+            <p>Roblox shopping experience</p>
+            <div class="btn-group">
+                <a href="https://www.roblox.com/games/111568286587895/SeaMart-Shopping" class="btn btn-gradient" target="_blank">Play Now</a>
+                <a href="https://www.roblox.com/communities/33359843/SeaMart-Corporation#!/about" class="btn btn-outline" target="_blank">Join Group</a>
+            </div>
         </div>
-    </section>
+    </div>
 
     <!-- Stats Section -->
     <section class="stats-section">
@@ -318,22 +440,37 @@
         <h2>Why Choose SeaMart?</h2>
         <div class="features-grid">
             <div class="feature-card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                </div>
                 <h3>Realistic Experience</h3>
                 <p>Immerse yourself in a realistic store environment with interactive checkouts, detailed aisles, and dynamic store mechanics.</p>
             </div>
             <div class="feature-card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                </div>
                 <h3>Active Support</h3>
                 <p>Our dedicated staff and community managers are always available to help you with any questions or issues.</p>
             </div>
             <div class="feature-card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
                 <h3>Development Updates</h3>
                 <p>We continuously work on new features, items, and store enhancements to bring you fresh content regularly.</p>
             </div>
             <div class="feature-card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                </div>
                 <h3>seaCafe</h3>
                 <p>Take a break from shopping and visit our seaCafe to enjoy delicious virtual treats and hang out with friends.</p>
             </div>
             <div class="feature-card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
                 <h3>Moderation Team</h3>
                 <p>We ensure a safe, friendly, and respectful environment for all players through active and professional moderation.</p>
             </div>
@@ -342,13 +479,30 @@
 
     <!-- Footer Section -->
     <footer>
-        <div class="footer-logo">
-            <img src="logo.png" alt="SeaMart Logo">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-brand-header">
+                    <img src="logo.png" alt="SeaMart Logo">
+                    <span>SeaMart</span>
+                </div>
+                <p>The ultimate Roblox shopping experience.</p>
+            </div>
+            <div class="footer-links-column">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="https://www.roblox.com/games/111568286587895/SeaMart-Shopping" target="_blank">Roblox Game</a></li>
+                    <li><a href="https://www.roblox.com/communities/33359843/SeaMart-Corporation#!/about" target="_blank">Roblox Group</a></li>
+                    <li><a href="https://discord.gg/HPmhWd8YZ7" target="_blank">Discord Server</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-links">
-            <a href="https://www.roblox.com/communities/33359843/SeaMart-Corporation#!/about" target="_blank">Roblox Group</a>
-            <a href="https://www.roblox.com/games/111568286587895/SeaMart-Shopping" target="_blank">Roblox Game</a>
-            <a href="https://discord.gg/HPmhWd8YZ7" target="_blank">Discord Server</a>
+        <div class="footer-bottom">
+            <p>2026 SeaMart Corporation. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="https://www.roblox.com/games/111568286587895/SeaMart-Shopping" target="_blank">Roblox</a>
+                <a href="https://www.roblox.com/communities/33359843/SeaMart-Corporation#!/about" target="_blank">Group</a>
+                <a href="https://discord.gg/HPmhWd8YZ7" target="_blank">Discord</a>
+            </div>
         </div>
     </footer>
 
