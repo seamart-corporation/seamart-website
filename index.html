@@ -1,44 +1,356 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeaMart Corporation</title>
+    <!-- Montserrat Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif !important;
         }
+
         body {
-            background-color: #ffffff;
-            color: #000000;
-            font-family: 'Montserrat', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Navigation Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            z-index: 1000;
+            border-bottom: 2px solid #585A8A;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 45px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #585A8A;
+        }
+
+        /* Hero Section */
+        .hero {
             height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('hero-bg.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 0 20px;
+            margin-top: 60px;
         }
-        h1 {
-            font-weight: 700;
-            font-size: 3rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #ffffff;
         }
-        p {
+
+        .hero p {
+            font-size: 1.5rem;
             font-weight: 400;
-            font-size: 1.25rem;
-            letter-spacing: 1px;
+            color: #d1d1d1;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #585A8A 0%, #3b3d63 100%);
+            border: none;
+            box-shadow: 0 4px 15px rgba(88, 90, 138, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #585A8A;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(88, 90, 138, 0.6);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 20px;
+            background-color: #000000;
+            text-align: center;
+        }
+
+        .stats-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #ffffff;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background-color: #0e0e14;
+            border: 2px solid #585A8A;
+            border-radius: 12px;
+            padding: 40px 30px;
+            min-width: 260px;
+            transition: border-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #ffffff;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #585A8A;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        /* Why Choose Us Section */
+        .features-section {
+            padding: 80px 20px;
+            background-color: #07070a;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: #ffffff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: #000000;
+            border: 1px solid #585A8A;
+            border-radius: 12px;
+            padding: 30px 25px;
+            text-align: left;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffffff;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #585A8A;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #cccccc;
+            font-weight: 400;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            border-top: 1px solid #585A8A;
+            padding: 40px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #585A8A;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>COMING SOON WEBSITE</h1>
-    <p>SeaMart Corporation</p>
+
+    <!-- Header Navigation Bar -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="SeaMart Corporation Logo">
+        </div>
+        <nav>
+            <a href="#">Information</a>
+            <a href="#">Careers</a>
+            <a href="#">Staff Portal</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to SeaMart!</h1>
+        <p>Roblox shopping experience</p>
+        <div class="btn-group">
+            <a href="https://www.roblox.com/games/111568286587895/SeaMart-Shopping" class="btn btn-gradient" target="_blank">Play Now</a>
+            <a href="https://www.roblox.com/communities/33359843/SeaMart-Corporation#!/about" class="btn btn-outline" target="_blank">Join Group</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <h2>Trusted by many members</h2>
+        <div class="stats-container">
+            <div class="stat-card">
+                <span class="stat-number">300+</span>
+                <span class="stat-label">Group Members</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">70+</span>
+                <span class="stat-label">Discord Members</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <h2>Why Choose SeaMart?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Realistic Experience</h3>
+                <p>Immerse yourself in a realistic store environment with interactive checkouts, detailed aisles, and dynamic store mechanics.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Active Support</h3>
+                <p>Our dedicated staff and community managers are always available to help you with any questions or issues.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Development Updates</h3>
+                <p>We continuously work on new features, items, and store enhancements to bring you fresh content regularly.</p>
+            </div>
+            <div class="feature-card">
+                <h3>seaCafe</h3>
+                <p>Take a break from shopping and visit our seaCafe to enjoy delicious virtual treats and hang out with friends.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Moderation Team</h3>
+                <p>We ensure a safe, friendly, and respectful environment for all players through active and professional moderation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-logo">
+            <img src="logo.png" alt="SeaMart Logo">
+        </div>
+        <div class="footer-links">
+            <a href="https://www.roblox.com/communities/33359843/SeaMart-Corporation#!/about" target="_blank">Roblox Group</a>
+            <a href="https://www.roblox.com/games/111568286587895/SeaMart-Shopping" target="_blank">Roblox Game</a>
+            <a href="https://discord.gg/HPmhWd8YZ7" target="_blank">Discord Server</a>
+        </div>
+    </footer>
+
 </body>
 </html>
