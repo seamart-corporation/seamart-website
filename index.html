@@ -203,7 +203,7 @@
             color: #ffffff;
         }
 
-        /* Features Section (Styled as per image reference) */
+        /* Features Section */
         .features-section {
             padding: 80px 20px;
             background-color: #000000;
@@ -218,8 +218,9 @@
         }
 
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
@@ -231,6 +232,8 @@
             border-radius: 16px;
             padding: 35px 30px;
             text-align: left;
+            flex: 1 1 320px;
+            max-width: 380px;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
@@ -274,7 +277,7 @@
             font-weight: 400;
         }
 
-        /* Footer (Styled as per image reference) */
+        /* Footer */
         footer {
             background-color: #000000;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -284,37 +287,15 @@
         .footer-top {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             flex-wrap: wrap;
             gap: 40px;
             margin-bottom: 50px;
         }
 
-        .footer-brand {
-            max-width: 300px;
-        }
-
-        .footer-brand-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        .footer-brand-header img {
-            height: 35px;
-        }
-
-        .footer-brand-header span {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #ffffff;
-        }
-
-        .footer-brand p {
-            color: #9aa0a6;
-            font-size: 0.9rem;
-            line-height: 1.5;
+        .footer-brand img {
+            height: 70px;
+            width: auto;
         }
 
         .footer-links-column h4 {
@@ -346,32 +327,12 @@
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             padding-top: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            text-align: center;
         }
 
         .footer-bottom p {
             color: #9aa0a6;
             font-size: 0.85rem;
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-bottom-links a {
-            color: #9aa0a6;
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-bottom-links a:hover {
-            color: #ffffff;
         }
 
         @media (max-width: 768px) {
@@ -389,6 +350,9 @@
             }
             footer {
                 padding: 40px 20px 20px 20px;
+            }
+            .feature-card {
+                max-width: 100%;
             }
         }
     </style>
@@ -481,11 +445,7 @@
     <footer>
         <div class="footer-top">
             <div class="footer-brand">
-                <div class="footer-brand-header">
-                    <img src="logo.png" alt="SeaMart Logo">
-                    <span>SeaMart</span>
-                </div>
-                <p>The ultimate Roblox shopping experience.</p>
+                <img src="logo.png" alt="SeaMart Logo">
             </div>
             <div class="footer-links-column">
                 <h4>Links</h4>
@@ -497,12 +457,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>2026 SeaMart Corporation. All rights reserved.</p>
-            <div class="footer-bottom-links">
-                <a href="https://www.roblox.com/games/111568286587895/SeaMart-Shopping" target="_blank">Roblox</a>
-                <a href="https://www.roblox.com/communities/33359843/SeaMart-Corporation#!/about" target="_blank">Group</a>
-                <a href="https://discord.gg/HPmhWd8YZ7" target="_blank">Discord</a>
-            </div>
+            <p>We are not affiliated with any brands within our games. All rights reserved.</p>
         </div>
     </footer>
 
