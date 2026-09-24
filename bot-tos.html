@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service for Discord Bot - SeaMart Corporation</title>
+    <title>Bot TOS - SeaMart Corporation</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -28,17 +28,16 @@
             position: relative;
         }
 
-        /* Capa oscura de fondo para asegurar legibilidad */
+        /* Capa oscura general sobre el fondo */
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.6);
             z-index: 1;
-            position: fixed;
         }
 
         /* Header con Logo arriba a la derecha */
@@ -59,27 +58,35 @@
             width: auto;
         }
 
-        /* Contenido principal */
+        /* Contenedor principal con fondo oscuro para legibilidad */
         .container {
             position: relative;
             z-index: 2;
             max-width: 900px;
             margin: 0 auto;
-            padding: 100px 20px 60px 20px;
+            padding: 120px 20px 60px 20px;
         }
 
-        /* Estilo para Títulos principales (#) */
+        .content-box {
+            background-color: rgba(11, 12, 16, 0.85);
+            border: 1px solid rgba(88, 90, 138, 0.4);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Estilo para Títulos principales */
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 20px;
             line-height: 1.2;
         }
 
-        /* Estilo para Subtítulos / Apartados (*) */
+        /* Estilo para Subtítulos / Apartados */
         h2 {
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #ffffff;
             margin-top: 35px;
@@ -88,14 +95,14 @@
 
         /* Textos y párrafos */
         p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 400;
             line-height: 1.7;
-            color: #ffffff;
+            color: #d1d1d1;
             margin-bottom: 15px;
         }
 
-        /* Negritas (**) */
+        /* Negritas */
         strong {
             font-weight: 700;
             color: #ffffff;
@@ -103,13 +110,13 @@
 
         /* Enlaces */
         a {
-            color: #ffffff;
+            color: #585A8A;
             text-decoration: underline;
-            transition: opacity 0.2s ease;
+            transition: color 0.2s ease;
         }
 
         a:hover {
-            opacity: 0.8;
+            color: #ffffff;
         }
 
         @media (max-width: 768px) {
@@ -122,7 +129,11 @@
             }
 
             .container {
-                padding-top: 80px;
+                padding-top: 90px;
+            }
+
+            .content-box {
+                padding: 25px 20px;
             }
 
             h1 {
@@ -144,76 +155,78 @@
 
     <!-- Contenido -->
     <div class="container">
-        <h1># Terms of Service for Discord Bot</h1>
-        <p><strong>Effective Date:</strong> September 24, 2026</p>
-        <p><strong>Last Updated:</strong> September 24, 2026</p>
+        <div class="content-box">
+            <h1>TOS | SeaMart Bots </h1>
+            <p><strong>Effective Date:</strong> September 24, 2026</p>
+            <p><strong>Last Updated:</strong> September 24, 2026</p>
 
-        <h2>*1. Acceptance of Terms</h2>
-        <p>By interacting with, sending commands to, or otherwise utilizing this Discord bot ("the Bot") within any authorized Discord server ("Guild") or direct message, you ("User," "You," or "Your") expressly agree to be bound by these Terms of Service ("Terms").</p>
-        <p>Because the Bot operates on a restricted, private deployment model and cannot be directly invited or added to external servers by general users, these Terms automatically take effect the moment you initiate any interaction or execute any function provided by the Bot.</p>
-        <p>If you do not agree to all of the terms and conditions set forth in this document, you must refrain from interacting with, executing commands on, or using the Bot in any manner.</p>
+            <h2>1. Acceptance of Terms</h2>
+            <p>By interacting with, sending commands to, or otherwise utilizing this Discord bot ("the Bot") within any authorized Discord server ("Guild") or direct message, you ("User," "You," or "Your") expressly agree to be bound by these Terms of Service ("Terms").</p>
+            <p>Because the Bot operates on a restricted, private deployment model and cannot be directly invited or added to external servers by general users, these Terms automatically take effect the moment you initiate any interaction or execute any function provided by the Bot.</p>
+            <p>If you do not agree to all of the terms and conditions set forth in this document, you must refrain from interacting with, executing commands on, or using the Bot in any manner.</p>
 
-        <h2>*2. Eligibility & Compliance with Discord Terms</h2>
-        <p>To interact with the Bot, you must meet the following criteria:</p>
-        <p><strong>Age Requirement:</strong> You must be at least 13 years of age, or the minimum legal age required in your jurisdiction to use the Discord platform.</p>
-        <p><strong>Platform Adherence:</strong> You must strictly comply with the Discord Terms of Service and Discord Community Guidelines. Any usage of the Bot that violates Discord’s official policies is strictly prohibited and constitutes a direct breach of these Terms.</p>
+            <h2>2. Eligibility & Compliance with Discord Terms</h2>
+            <p>To interact with the Bot, you must meet the following criteria:</p>
+            <p><strong>Age Requirement:</strong> You must be at least 13 years of age, or the minimum legal age required in your jurisdiction to use the Discord platform.</p>
+            <p><strong>Platform Adherence:</strong> You must strictly comply with the Discord Terms of Service and Discord Community Guidelines. Any usage of the Bot that violates Discord’s official policies is strictly prohibited and constitutes a direct breach of these Terms.</p>
 
-        <h2>*3. License & Scope of Service (Private/Restricted Access)</h2>
-        <p>Subject to your compliance with these Terms, the Bot developers and administrators ("We," "Us," or "Our") grant you a limited, revocable, non-exclusive, non-transferable, and non-sublicensable license to interact with the Bot solely within the servers or channels where it has been officially deployed.</p>
-        <p><strong>Private / Restricted Deployment:</strong> The Bot is a private tool and is not available for public distribution, invitation, or installation by unauthorized users. Access to the Bot is granted at our sole discretion.</p>
-        <p><strong>Modifications & Discontinuation:</strong> We reserve the right to modify, update, restrict, suspend, or permanently terminate access to any command, feature, or the Bot in its entirety at any time, with or without prior notice.</p>
-        <p><strong>Availability & Service Level:</strong> The Bot is provided on an "AS IS" and "AS AVAILABLE" basis. Continuous, uninterrupted, or bug-free operation is not guaranteed.</p>
+            <h2>3. License & Scope of Service (Private/Restricted Access)</h2>
+            <p>Subject to your compliance with these Terms, the Bot developers and administrators ("We," "Us," or "Our") grant you a limited, revocable, non-exclusive, non-transferable, and non-sublicensable license to interact with the Bot solely within the servers or channels where it has been officially deployed.</p>
+            <p><strong>Private / Restricted Deployment:</strong> The Bot is a private tool and is not available for public distribution, invitation, or installation by unauthorized users. Access to the Bot is granted at our sole discretion.</p>
+            <p><strong>Modifications & Discontinuation:</strong> We reserve the right to modify, update, restrict, suspend, or permanently terminate access to any command, feature, or the Bot in its entirety at any time, with or without prior notice.</p>
+            <p><strong>Availability & Service Level:</strong> The Bot is provided on an "AS IS" and "AS AVAILABLE" basis. Continuous, uninterrupted, or bug-free operation is not guaranteed.</p>
 
-        <h2>*4. Acceptable Use Policy</h2>
-        <p>You agree not to misuse the Bot or assist others in doing so. Prohibited actions include, but are not limited to:</p>
-        <p><strong>Exploitation & Abuse:</strong> Intentionally exploiting bugs, glitches, or unintended behaviors within the Bot to gain unfair privileges, bypass permission restrictions, or cause unintended outcomes.</p>
-        <p><strong>Rate Limiting & Spam:</strong> Intentionally spamming commands, running automated scripts, or attempting to overload the Bot’s infrastructure, databases, or API rate limits.</p>
-        <p><strong>Malicious Content:</strong> Using the Bot to store, generate, transmit, or display illegal material, malware, phishing links, hate speech, harassment, or unauthorized explicit/NSFW content.</p>
-        <p><strong>Reverse Engineering:</strong> Attempting to decompile, reverse engineer, scrape, extract source code, or replicate the Bot's internal logic and codebase without express written permission.</p>
-        <p><strong>Virtual Currency & Feature Manipulation:</strong> Misusing or attempting to manipulate any internal economy, leveling, role assignment, or automated management systems provided by the Bot.</p>
+            <h2>4. Acceptable Use Policy</h2>
+            <p>You agree not to misuse the Bot or assist others in doing so. Prohibited actions include, but are not limited to:</p>
+            <p><strong>Exploitation & Abuse:</strong> Intentionally exploiting bugs, glitches, or unintended behaviors within the Bot to gain unfair privileges, bypass permission restrictions, or cause unintended outcomes.</p>
+            <p><strong>Rate Limiting & Spam:</strong> Intentionally spamming commands, running automated scripts, or attempting to overload the Bot’s infrastructure, databases, or API rate limits.</p>
+            <p><strong>Malicious Content:</strong> Using the Bot to store, generate, transmit, or display illegal material, malware, phishing links, hate speech, harassment, or unauthorized explicit/NSFW content.</p>
+            <p><strong>Reverse Engineering:</strong> Attempting to decompile, reverse engineer, scrape, extract source code, or replicate the Bot's internal logic and codebase without express written permission.</p>
+            <p><strong>Virtual Currency & Feature Manipulation:</strong> Misusing or attempting to manipulate any internal economy, leveling, role assignment, or automated management systems provided by the Bot.</p>
 
-        <h2>*5. Virtual Items, Roles & Progression Features</h2>
-        <p>If the Bot features internal virtual currency, ranks, leveling systems, temporary permissions, or virtual items:</p>
-        <p><strong>No Real-World Value:</strong> All in-bot items, currencies, ranks, and perks are purely virtual, have no monetary value, and cannot be redeemed, transferred, or exchanged for real currency or legal tender.</p>
-        <p><strong>Administrative Discretion:</strong> We reserve the right to reset, adjust, revoke, or remove any virtual balances, roles, or progression data at any time in cases of system resets, exploits, policy enforcement, or server maintenance.</p>
+            <h2>5. Virtual Items, Roles & Progression Features</h2>
+            <p>If the Bot features internal virtual currency, ranks, leveling systems, temporary permissions, or virtual items:</p>
+            <p><strong>No Real-World Value:</strong> All in-bot items, currencies, ranks, and perks are purely virtual, have no monetary value, and cannot be redeemed, transferred, or exchanged for real currency or legal tender.</p>
+            <p><strong>Administrative Discretion:</strong> We reserve the right to reset, adjust, revoke, or remove any virtual balances, roles, or progression data at any time in cases of system resets, exploits, policy enforcement, or server maintenance.</p>
 
-        <h2>*6. Data Privacy & Processing</h2>
-        <p>Your privacy is important to us. By interacting with the Bot, you acknowledge that certain data may be collected and processed to ensure proper functionality and security.</p>
-        <p><strong>Data Collected:</strong> Collected information may include Discord User IDs, Server/Guild IDs, Channel IDs, message content (when relevant to processing specific commands or administrative actions), custom configuration preferences, and system usage logs.</p>
-        <p><strong>Purpose of Collection:</strong> Data is processed exclusively to deliver requested bot features, execute automated server moderation/management, enforce rate limits, and maintain system security.</p>
-        <p><strong>Data Retention:</strong> Data is retained only for as long as necessary to fulfill operational requirements or maintain log history. For full details on how your data is handled, stored, and deleted, please consult our Privacy Policy.</p>
+            <h2>6. Data Privacy & Processing</h2>
+            <p>Your privacy is important to us. By interacting with the Bot, you acknowledge that certain data may be collected and processed to ensure proper functionality and security.</p>
+            <p><strong>Data Collected:</strong> Collected information may include Discord User IDs, Server/Guild IDs, Channel IDs, message content (when relevant to processing specific commands or administrative actions), custom configuration preferences, and system usage logs.</p>
+            <p><strong>Purpose of Collection:</strong> Data is processed exclusively to deliver requested bot features, execute automated server moderation/management, enforce rate limits, and maintain system security.</p>
+            <p><strong>Data Retention:</strong> Data is retained only for as long as necessary to fulfill operational requirements or maintain log history. For full details on how your data is handled, stored, and deleted, please consult our Privacy Policy.</p>
 
-        <h2>*7. Intellectual Property Rights</h2>
-        <p>All intellectual property rights associated with the Bot—including source code, system architecture, original graphics, text, branding, and assets—belong exclusively to the Bot developers and owners.</p>
-        <p>Nothing in these Terms grants you any ownership, copyright, or intellectual property rights over any part of the Bot.</p>
+            <h2>7. Intellectual Property Rights</h2>
+            <p>All intellectual property rights associated with the Bot—including source code, system architecture, original graphics, text, branding, and assets—belong exclusively to the Bot developers and owners.</p>
+            <p>Nothing in these Terms grants you any ownership, copyright, or intellectual property rights over any part of the Bot.</p>
 
-        <h2>*8. Suspension & Access Revocation</h2>
-        <p>We reserve the right, at our sole discretion, to block, blacklist, or permanently restrict your ability to interact with the Bot (at an individual user level or across entire servers) immediately and without prior notice if:</p>
-        <p>You violate any provision of these Terms or Discord’s official Terms of Service.</p>
-        <p>You attempt to disrupt, exploit, or compromise the Bot’s infrastructure or underlying systems.</p>
-        <p>Required by law enforcement or administrative necessity.</p>
-        <p>Upon blacklisting or termination, your right to interact with the Bot is immediately revoked, and any associated user data or saved progress may be permanently deleted.</p>
+            <h2>8. Suspension & Access Revocation</h2>
+            <p>We reserve the right, at our sole discretion, to block, blacklist, or permanently restrict your ability to interact with the Bot (at an individual user level or across entire servers) immediately and without prior notice if:</p>
+            <p>You violate any provision of these Terms or Discord’s official Terms of Service.</p>
+            <p>You attempt to disrupt, exploit, or compromise the Bot’s infrastructure or underlying systems.</p>
+            <p>Required by law enforcement or administrative necessity.</p>
+            <p>Upon blacklisting or termination, your right to interact with the Bot is immediately revoked, and any associated user data or saved progress may be permanently deleted.</p>
 
-        <h2>*9. Disclaimer of Warranties</h2>
-        <p><strong>THE BOT IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.</strong></p>
-        <p><strong>WE DO NOT WARRANT THAT THE BOT WILL MEET YOUR SPECIFIC EXPECTATIONS, OPERATE WITHOUT INTERRUPTION, BE COMPLETELY SECURE, OR REMAIN ERROR-FREE AT ALL TIMES.</strong></p>
+            <h2>9. Disclaimer of Warranties</h2>
+            <p><strong>THE BOT IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.</strong></p>
+            <p><strong>WE DO NOT WARRANT THAT THE BOT WILL MEET YOUR SPECIFIC EXPECTATIONS, OPERATE WITHOUT INTERRUPTION, BE COMPLETELY SECURE, OR REMAIN ERROR-FREE AT ALL TIMES.</strong></p>
 
-        <h2>*10. Limitation of Liability</h2>
-        <p><strong>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE BOT DEVELOPERS, OPERATORS, OR ASSOCIATED ADMINISTRATORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES—INCLUDING LOSS OF DATA, SERVER DISRUPTIONS, LOSS OF VIRTUAL PROGRESS, OR OTHER INTANGIBLE LOSSES—ARISING OUT OF OR IN CONNECTION WITH YOUR INTERACTION WITH OR INABILITY TO INTERACT WITH THE BOT.</strong></p>
+            <h2>10. Limitation of Liability</h2>
+            <p><strong>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE BOT DEVELOPERS, OPERATORS, OR ASSOCIATED ADMINISTRATORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES—INCLUDING LOSS OF DATA, SERVER DISRUPTIONS, LOSS OF VIRTUAL PROGRESS, OR OTHER INTANGIBLE LOSSES—ARISING OUT OF OR IN CONNECTION WITH YOUR INTERACTION WITH OR INABILITY TO INTERACT WITH THE BOT.</strong></p>
 
-        <h2>*11. Indemnification</h2>
-        <p>You agree to defend, indemnify, and hold harmless the Bot developers, operators, and server administrators from and against any claims, damages, liabilities, losses, and expenses (including legal fees) resulting from or arising out of:</p>
-        <p>Your interaction with or misuse of the Bot.</p>
-        <p>Your violation of these Terms or applicable laws.</p>
-        <p>Any content submitted or executed through the Bot via your Discord account.</p>
+            <h2>11. Indemnification</h2>
+            <p>You agree to defend, indemnify, and hold harmless the Bot developers, operators, and server administrators from and against any claims, damages, liabilities, losses, and expenses (including legal fees) resulting from or arising out of:</p>
+            <p>Your interaction with or misuse of the Bot.</p>
+            <p>Your violation of these Terms or applicable laws.</p>
+            <p>Any content submitted or executed through the Bot via your Discord account.</p>
 
-        <h2>*12. Changes to these Terms</h2>
-        <p>We reserve the right to update or modify these Terms at any time. Any revisions will take effect immediately upon updating the "Last Updated" date above. Your continued interaction with or execution of commands on the Bot following any changes constitutes your full acceptance of the revised Terms.</p>
+            <h2>12. Changes to these Terms</h2>
+            <p>We reserve the right to update or modify these Terms at any time. Any revisions will take effect immediately upon updating the "Last Updated" date above. Your continued interaction with or execution of commands on the Bot following any changes constitutes your full acceptance of the revised Terms.</p>
 
-        <h2>*13. Contact & Inquiries</h2>
-        <p>If you have questions regarding these Terms or need to contact the administration regarding the Bot, please reach out through the official support channel or server where the Bot operates:</p>
-        <p><strong>Support Channel / Server:</strong> <a href="https://discord.gg/HPmhWd8YZ7" target="_blank">https://discord.gg/HPmhWd8YZ7</a></p>
-        <p><strong>Contact Email:</strong> <a href="mailto:seamartrobloxcorporation@gmail.com">seamartrobloxcorporation@gmail.com</a></p>
+            <h2>13. Contact & Inquiries</h2>
+            <p>If you have questions regarding these Terms or need to contact the administration regarding the Bot, please reach out through the official support channel or server where the Bot operates:</p>
+            <p><strong>Support Channel / Server:</strong> <a href="https://discord.gg/HPmhWd8YZ7" target="_blank">https://discord.gg/HPmhWd8YZ7</a></p>
+            <p><strong>Contact Email:</strong> <a href="mailto:seamartrobloxcorporation@gmail.com">seamartrobloxcorporation@gmail.com</a></p>
+        </div>
     </div>
 
 </body>
