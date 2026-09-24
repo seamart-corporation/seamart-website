@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Privacy Policy - SeaMart Corporation</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Montserrat Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif !important;
+        }
+
+        body {
+            background: url('hero-bg.jpg') center/cover no-repeat fixed;
+            color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Capa oscura general sobre el fondo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        /* Header con Logo arriba a la derecha */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 20px 40px;
+            z-index: 1000;
+        }
+
+        header img {
+            height: 45px;
+            width: auto;
+        }
+
+        /* Contenedor principal con fondo oscuro para legibilidad */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 20px 60px 20px;
+        }
+
+        .content-box {
+            background-color: rgba(11, 12, 16, 0.85);
+            border: 1px solid rgba(88, 90, 138, 0.4);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Estilo para Títulos principales */
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        /* Estilo para Subtítulos / Apartados */
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        /* Textos y párrafos */
+        p {
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #d1d1d1;
+            margin-bottom: 15px;
+        }
+
+        /* Negritas */
+        strong {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Enlaces */
+        a {
+            color: #585A8A;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            header img {
+                height: 35px;
+            }
+
+            .container {
+                padding-top: 90px;
+            }
+
+            .content-box {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header con el Logo arriba a la derecha -->
+    <header>
+        <img src="logo.png" alt="SeaMart Logo">
+    </header>
+
+    <!-- Contenido -->
+    <div class="container">
+        <div class="content-box">
+            <h1>Bots Privacy Policy | Seamart Corporation</h1>
+            <p><strong>Effective Date:</strong> September 24, 2026</p>
+            <p><strong>Last Updated:</strong> September 24, 2026</p>
+
+            <h2>1. Introduction</h2>
+            <p>This Privacy Policy explains how the developers and administrators ("We," "Us," or "Our") collect, use, store, and protect your information when you interact with or execute commands on our private Discord bot ("the Bot").</p>
+            <p>Because the Bot is a private/restricted tool, this policy applies to all users who interact with the Bot within authorized Discord servers ("Guilds") or direct messages. By interacting with the Bot, you consent to the data practices described in this policy.</p>
+            <p>If you do not agree with this policy, please refrain from executing commands or interacting with the Bot.</p>
+
+            <h2>2. Information We Collect</h2>
+            <p>We only collect data that is strictly necessary for the operation, functionality, security, and administrative features of the Bot.</p>
+            
+            <p><strong>A. Automatically Collected Data</strong></p>
+            <p>When you interact with the Bot, we may collect:</p>
+            <p><strong>User Identifiers:</strong> Your unique Discord User ID (a numeric string used to identify your account and associate saved settings, levels, or permissions).</p>
+            <p><strong>Server & Channel Identifiers:</strong> Discord Guild (Server) IDs and Channel IDs where commands are executed, used to map server-specific settings and configurations.</p>
+            <p><strong>Role & Permission Data:</strong> Information about your roles within the server, used to verify authorization for restricted commands or administrative functions.</p>
+            <p><strong>Timestamp & Command Logs:</strong> Records of when commands were executed, used for rate-limiting, bug debugging, and security auditing.</p>
+
+            <p><strong>B. Message Content & Direct Interactions</strong></p>
+            <p><strong>Command Arguments:</strong> Text input provided directly within bot commands (e.g., custom configuration parameters, search terms, or setup values).</p>
+            <p><strong>Temporary Message Processing:</strong> The Bot does not permanently log or store general channel chat messages. Messages are only processed temporarily in memory when required to execute specific automated tasks (such as moderation filters or command parsing) and are immediately discarded.</p>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>We use the collected data exclusively for the following purposes:</p>
+            <p><strong>Core Functionality:</strong> To process commands, store server settings, maintain user profiles or progression, and deliver the Bot's intended features.</p>
+            <p><strong>Access Control & Security:</strong> To enforce permission levels, verify administrative access, detect exploits or spam, and maintain system stability.</p>
+            <p><strong>Debugging & Improvements:</strong> To analyze error logs, fix technical bugs, and optimize response times.</p>
+            <p><strong>Policy Enforcement:</strong> To enforce our <a href="bot-tos.html">Terms of Service</a> and prevent unauthorized access or system abuse.</p>
+
+            <h2>4. Legal Basis for Data Processing</h2>
+            <p>We process your data under the following legal grounds:</p>
+            <p><strong>Contractual Necessity:</strong> Processing is required to provide you with the Bot's functionality upon your request (command execution).</p>
+            <p><strong>Legitimate Interests:</strong> Processing is necessary to protect the security, functionality, and administrative integrity of the Bot and the servers it operates in.</p>
+
+            <h2>5. Third-Party Sharing & Disclosure</h2>
+            <p>We do not sell, rent, trade, or monetize your personal data or Discord information under any circumstances.</p>
+            <p>We will only disclose collected data under the following limited conditions:</p>
+            <p><strong>Service Infrastructure:</strong> Data may pass through secure cloud hosting providers or database systems strictly used to host and run the Bot.</p>
+            <p><strong>Legal Requirements:</strong> If required by law, subpoena, court order, or official request from government authorities.</p>
+            <p><strong>Platform Compliance:</strong> To comply with official requests or investigations by Discord Inc. in cases of Terms of Service or Safety violations.</p>
+
+            <h2>6. Data Storage, Security & Retention</h2>
+            <p><strong>A. Security</strong></p>
+            <p>We implement reasonable technical and organizational measures to protect your data from unauthorized access, alteration, disclosure, or destruction. However, no internet transmission or electronic storage method is 100% secure, and we cannot guarantee absolute security.</p>
+            
+            <p><strong>B. Data Retention</strong></p>
+            <p><strong>Operational Data:</strong> Configuration settings, user progression, and profile data are stored for as long as the Bot remains in the server or until a deletion request is processed.</p>
+            <p><strong>System Logs:</strong> Temporary command logs and error traces are automatically purged on a regular basis (typically every 30 to 90 days).</p>
+
+            <h2>7. Your Data Rights & Choices</h2>
+            <p>Depending on your jurisdiction, you have the following rights regarding your data:</p>
+            <p><strong>Right to Access:</strong> You may request a copy of any persistent data associated with your Discord User ID stored in our databases.</p>
+            <p><strong>Right to Deletion (Data Eradication):</strong> You may request the permanent removal of all data linked to your Discord User ID or Server ID.</p>
+            <p><strong>Opt-Out:</strong> You can stop all data collection at any time simply by ceasing to interact with or execute commands on the Bot.</p>
+            <p>To submit a data access or deletion request, please contact us through our official support channel listed below.</p>
+
+            <h2>8. Children’s Privacy</h2>
+            <p>The Bot is intended for users who are at least 13 years of age (or the legal minimum age required in your country to use Discord). We do not knowingly collect personal data from children under 13. If we discover that a child under 13 has provided us with personal information, we will immediately delete such data from our servers.</p>
+
+            <h2>9. Changes to This Privacy Policy</h2>
+            <p>We reserve the right to update or modify this Privacy Policy at any time. Any changes will become effective immediately upon updating the "Last Updated" date at the top of this document. Continued interaction with the Bot after updates indicates your acceptance of the revised policy.</p>
+
+            <h2>10. Contact Us</h2>
+            <p>For any privacy-related questions, data requests, or concerns, please reach out through our official administration channels:</p>
+            <p><strong>Support Channel / Server:</strong> <a href="https://discord.gg/HPmhWd8YZ7" target="_blank">https://discord.gg/HPmhWd8YZ7</a></p>
+            <p><strong>Contact Email / Discord Contact:</strong> <a href="mailto:seamartrobloxcorporation@gmail.com">seamartrobloxcorporation@gmail.com</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
