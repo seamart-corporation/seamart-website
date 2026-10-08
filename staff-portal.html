@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon - SeaMart Corporation</title>
+    <title>Redirecting to Staff Portal</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    
+    <!-- Google Font: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Automatic Fallback Redirect after 5 seconds -->
+    <meta http-equiv="refresh" content="5;url=https://seamartcorporation.planetaryapp.cloud">
+
     <style>
         * {
             margin: 0;
@@ -16,45 +25,124 @@
         }
 
         body {
-            background-color: #585A8A;
             height: 100vh;
+            width: 100vw;
+            background: url('hero-bg.jpg') no-repeat center center/cover;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        /* Subtle overlay to ensure high readability over background image */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+
+        /* Top Right Logo */
+        .logo {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            max-width: 120px;
+            height: auto;
+            z-index: 2;
+        }
+
+        /* Center Content Box */
+        .center-container {
+            position: relative;
+            z-index: 2;
             text-align: center;
-            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            padding: 20px;
         }
 
-        h1 {
-            font-size: 3.5rem;
+        .title {
+            font-size: 2.5rem;
             font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-
-        .btn-back {
-            background-color: #000000;
             color: #ffffff;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            letter-spacing: 0.5px;
         }
 
-        .btn-back:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        /* Loading Spinner */
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-top: 5px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .fallback-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 10px;
+        }
+
+        .fallback-text a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            .logo {
+                top: 20px;
+                right: 20px;
+                max-width: 90px;
+            }
+            .spinner {
+                width: 45px;
+                height: 45px;
+                border-width: 4px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>COMING SOON</h1>
-    <a href="index.html" class="btn-back">Go back</a>
+    <div class="overlay"></div>
 
+    <!-- Top Right Logo -->
+    <img src="logo.png" alt="Logo" class="logo">
+
+    <!-- Main Content -->
+    <div class="center-container">
+        <h1 class="title">Moving To Staff Portal...</h1>
+        <div class="spinner"></div>
+        <p class="fallback-text">
+            If you are not redirected automatically, <a href="https://seamartcorporation.planetaryapp.cloud">click here</a>.
+        </p>
+    </div>
+
+    <!-- JavaScript 5-second Redirect -->
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://seamartcorporation.planetaryapp.cloud";
+        }, 5000);
+    </script>
 </body>
 </html>
