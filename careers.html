@@ -1,1035 +1,626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeaMart Careers Portal</title>
-    <!-- Google Font: Montserrat -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            DEFAULT: '#585A8A',
-                            hover: '#474972',
-                            light: '#7274A8',
-                            dark: '#0a0a0d',
-                            card: '#121218',
-                            surface: '#181822',
-                            border: '#2A2A3A'
-                        },
-                        smd: '#EF4444',
-                        gmd: '#3B82F6',
-                        prd: '#EC4899',
-                        tmd: '#10B981'
-                    },
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        * {
-            font-family: 'Montserrat', sans-serif;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SeaMart - Carees Portal</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <!-- Google Font: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+    }
 
-        body {
-            background-color: #0a0a0d;
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+    }
 
-        /* Hero Background with Dark Overlay */
-        .hero-container {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.82), rgba(10, 10, 13, 0.95)), url('hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
+    /* Dark background image with overlay */
+    .hero-bg {
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.95)), url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
 
-        /* Card Glows */
-        .card-smd {
-            border-top: 3px solid #EF4444;
-            box-shadow: 0 10px 30px -10px rgba(239, 68, 68, 0.2);
-        }
-        .card-smd:hover {
-            box-shadow: 0 15px 40px -5px rgba(239, 68, 68, 0.4);
-            border-color: #EF4444;
-        }
+    /* Primary Accent Styling (#585A8A) */
+    .bg-accent { background-color: #585A8A; }
+    .bg-accent:hover { background-color: #464870; }
+    .text-accent { color: #585A8A; }
+    .border-accent { border-color: #585A8A; }
 
-        .card-gmd {
-            border-top: 3px solid #3B82F6;
-            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
-        }
-        .card-gmd:hover {
-            box-shadow: 0 15px 40px -5px rgba(59, 130, 246, 0.4);
-            border-color: #3B82F6;
-        }
+    /* Department Card Styles */
+    .dept-card {
+      background: rgba(12, 12, 16, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        .card-prd {
-            border-top: 3px solid #EC4899;
-            box-shadow: 0 10px 30px -10px rgba(236, 72, 153, 0.2);
-        }
-        .card-prd:hover {
-            box-shadow: 0 15px 40px -5px rgba(236, 72, 153, 0.4);
-            border-color: #EC4899;
-        }
+    /* Red - Staff Management Department (SMD) */
+    .dept-smd {
+      border-top: 4px solid #ef4444;
+      box-shadow: 0 10px 30px -10px rgba(239, 68, 68, 0.2);
+    }
+    .dept-smd:hover {
+      box-shadow: 0 15px 35px -5px rgba(239, 68, 68, 0.4);
+      border-color: #ef4444;
+    }
 
-        .card-tmd {
-            border-top: 3px solid #10B981;
-            box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.2);
-        }
-        .card-tmd:hover {
-            box-shadow: 0 15px 40px -5px rgba(16, 185, 129, 0.4);
-            border-color: #10B981;
-        }
+    /* Blue - Game Management Team (GMD) */
+    .dept-gmd {
+      border-top: 4px solid #3b82f6;
+      box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
+    }
+    .dept-gmd:hover {
+      box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.4);
+      border-color: #3b82f6;
+    }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0d;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #585A8A;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #7274A8;
-        }
+    /* Pink - Public Relations Department (PRD) */
+    .dept-prd {
+      border-top: 4px solid #ec4899;
+      box-shadow: 0 10px 30px -10px rgba(236, 72, 153, 0.2);
+    }
+    .dept-prd:hover {
+      box-shadow: 0 15px 35px -5px rgba(236, 72, 153, 0.4);
+      border-color: #ec4899;
+    }
 
-        /* Scale Option Radio Styles */
-        .scale-radio input:checked + label {
-            background-color: #585A8A;
-            border-color: #7274A8;
-            color: #ffffff;
-            font-weight: bold;
-            box-shadow: 0 0 12px rgba(88, 90, 138, 0.6);
-        }
+    /* Green - Training Management Department (TMD) */
+    .dept-tmd {
+      border-top: 4px solid #22c55e;
+      box-shadow: 0 10px 30px -10px rgba(34, 197, 94, 0.2);
+    }
+    .dept-tmd:hover {
+      box-shadow: 0 15px 35px -5px rgba(34, 197, 94, 0.4);
+      border-color: #22c55e;
+    }
 
-        /* Modal backdrop blur */
-        .modal-backdrop {
-            backdrop-filter: blur(8px);
-            background-color: rgba(5, 5, 8, 0.85);
-        }
-
-        /* Custom inputs */
-        .form-input {
-            background-color: #181822;
-            border: 1px solid #2A2A3A;
-            color: #ffffff;
-            transition: all 0.2s ease;
-        }
-        .form-input:focus {
-            border-color: #585A8A;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(88, 90, 138, 0.3);
-        }
-
-        /* Button Pulse animation */
-        @keyframes subtlePulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.95; transform: scale(1.01); }
-        }
-        .pulse-btn {
-            animation: subtlePulse 3s infinite ease-in-out;
-        }
-    </style>
+    /* Custom Scrollbar for Modal */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #585A8A;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #7376b0;
+    }
+  </style>
 </head>
-<body class="bg-brand-dark text-white selection:bg-brand selection:text-white">
+<body class="hero-bg min-h-screen flex flex-col justify-between selection:bg-[#585A8A] selection:text-white">
 
-    <div class="hero-container flex flex-col justify-between min-h-screen">
-        
-        <!-- TOP HEADER BAR -->
-        <header class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between relative z-10">
-            <!-- Left Branding Placeholder / Status -->
-            <div class="flex items-center space-x-3">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-surface border border-brand-border text-gray-300">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
-                    Official Recruitment Portal
-                </span>
-            </div>
+  <!-- PAGE HEADER -->
+  <header class="w-full max-w-7xl mx-auto px-6 py-8 flex items-center justify-between border-b border-white/10">
+    <div class="flex-1"></div>
+    <h1 class="text-2xl md:text-4xl font-extrabold tracking-wide text-center uppercase text-white drop-shadow-md">
+      SeaMart - Carees Portal
+    </h1>
+    <div class="flex-1 flex justify-end">
+      <img src="favicon.png" alt="SeaMart Logo" class="h-12 w-12 object-contain filter drop-shadow-lg" onerror="this.src='https://via.placeholder.com/48?text=SM'">
+    </div>
+  </header>
 
-            <!-- Right Logo displaying logo.png with Fallback -->
-            <div class="flex items-center space-x-3">
-                <a href="#" class="block group focus:outline-none">
-                    <img 
-                        src="logo.png" 
-                        alt="SeaMart Logo" 
-                        class="h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                        onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\'h-12 w-12 rounded-xl bg-brand flex items-center justify-center font-black text-xl text-white shadow-lg border border-brand-light\'>SM</div>';"
-                    />
-                </a>
-            </div>
-        </header>
-
-        <!-- MAIN TITLE SECTION -->
-        <main class="w-full max-w-7xl mx-auto px-6 py-8 flex-grow flex flex-col justify-center">
-            
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white mb-4 drop-shadow-md">
-                    SeaMart Careers Portal
-                </h1>
-                <p class="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
-                    Join our corporate team and shape the future of SeaMart. Select an open department below to submit your application.
-                </p>
-                <div class="h-1 w-24 bg-brand mx-auto mt-6 rounded-full"></div>
-            </div>
-
-            <!-- DEPARTMENT CARDS CONTAINER GRID -->
-            <div id="departments-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto w-full mb-12">
-                <!-- Dynamically populated by JS based on DEPARTMENTS configuration -->
-            </div>
-
-            <!-- FOOTER INFO -->
-            <div class="text-center text-xs text-gray-500 mt-8 mb-4">
-                <p>&copy; <script>document.write(new Date().getFullYear())</script> SeaMart Corporation. All rights reserved.</p>
-                <p class="mt-1">Powered by SeaMart Automated Management System</p>
-            </div>
-        </main>
+  <!-- MAIN CONTENT -->
+  <main class="w-full max-w-6xl mx-auto px-6 py-12 flex-grow">
+    
+    <div class="text-center mb-12">
+      <p class="text-gray-300 text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed">
+        Welcome to the official SeaMart recruitment platform. Select an open department below to begin your application process. Please ensure all answers are detailed and truthful.
+      </p>
     </div>
 
-    <!-- APPLICATION MODAL WIZARD -->
-    <div id="application-modal" class="fixed inset-0 z-50 hidden overflow-y-auto modal-backdrop flex items-center justify-center p-4">
-        
-        <div class="relative w-full max-w-3xl bg-brand-card rounded-2xl border border-brand-border shadow-2xl overflow-hidden my-8 transform transition-all">
-            
-            <!-- Modal Header -->
-            <div id="modal-header-bg" class="px-6 py-5 border-b border-brand-border bg-brand-surface flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <span id="modal-dept-badge" class="px-3 py-1 rounded-md text-xs font-bold tracking-wider uppercase text-white bg-brand">
-                        SMD
-                    </span>
-                    <div>
-                        <h3 id="modal-dept-title" class="text-xl font-bold text-white">Department Application</h3>
-                        <p id="modal-section-indicator" class="text-xs text-gray-400">Section 1 of 4</p>
-                    </div>
-                </div>
-                <button type="button" onclick="closeModal()" class="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-brand-border transition-colors">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
+    <!-- DEPARTMENT APPLICATIONS GRID -->
+    <div id="departments-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <!-- Rendered dynamically via JavaScript -->
+    </div>
 
-            <!-- Step Progress Bar -->
-            <div class="w-full bg-brand-dark h-1.5">
-                <div id="modal-progress-bar" class="bg-brand h-1.5 transition-all duration-300 w-1/4"></div>
-            </div>
+    <!-- GO BACK BUTTON -->
+    <div class="flex justify-center mt-8 mb-12">
+      <a href="http://www.seamartcorporation.qd.je/" 
+         class="inline-flex items-center gap-3 bg-[#585A8A] hover:bg-[#464870] text-white font-bold py-3.5 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 border border-white/10 uppercase tracking-wider text-sm">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Go Back
+      </a>
+    </div>
 
-            <!-- Modal Form -->
-            <form id="application-form" onsubmit="handleFormSubmit(event)" class="p-6 md:p-8">
-                
-                <!-- STEP 1: BASIC INFORMATION -->
-                <div id="step-1" class="step-content">
-                    <div class="mb-6 border-b border-brand-border pb-4">
-                        <span class="text-xs font-bold tracking-widest text-brand-light uppercase">Section 1 of 4</span>
-                        <h4 class="text-2xl font-extrabold text-white mt-1">Basic Information</h4>
-                        <p class="text-sm text-gray-400 mt-1">Please provide your official identification details for verification.</p>
-                    </div>
+  </main>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <!-- Roblox Username -->
-                        <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">
-                                Roblox Username <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                                    <i class="fa-solid fa-user"></i>
-                                </span>
-                                <input type="text" id="roblox-username" name="robloxUsername" required placeholder="e.g. RobloxPlayer123" class="w-full pl-10 pr-4 py-3 rounded-xl form-input text-sm">
-                            </div>
-                        </div>
+  <!-- FOOTER -->
+  <footer class="w-full border-t border-white/10 bg-black/80 py-6 text-center text-xs text-gray-500">
+    <p>&copy; 2026 SeaMart Corporation. All rights reserved.</p>
+  </footer>
 
-                        <!-- Roblox ID -->
-                        <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">
-                                Roblox User ID <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                                    <i class="fa-solid fa-id-badge"></i>
-                                </span>
-                                <input type="text" id="roblox-id" name="robloxId" required placeholder="e.g. 123456789" class="w-full pl-10 pr-4 py-3 rounded-xl form-input text-sm">
-                            </div>
-                        </div>
-
-                        <!-- Discord Username -->
-                        <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">
-                                Discord Username <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                                    <i class="fa-brands fa-discord"></i>
-                                </span>
-                                <input type="text" id="discord-username" name="discordUsername" required placeholder="e.g. username" class="w-full pl-10 pr-4 py-3 rounded-xl form-input text-sm">
-                            </div>
-                        </div>
-
-                        <!-- Discord User ID -->
-                        <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">
-                                Discord User ID <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                                    <i class="fa-solid fa-hashtag"></i>
-                                </span>
-                                <input type="text" id="discord-id" name="discordId" required placeholder="e.g. 849302194839201928" class="w-full pl-10 pr-4 py-3 rounded-xl form-input text-sm">
-                            </div>
-                            <p class="text-[11px] text-gray-500 mt-1">Enable Discord Developer Mode to copy your numerical ID.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- STEP 2: MAIN TEST (DYNAMICALLY INJECTED QUESTIONS) -->
-                <div id="step-2" class="step-content hidden">
-                    <div class="mb-6 border-b border-brand-border pb-4">
-                        <span class="text-xs font-bold tracking-widest text-brand-light uppercase">Section 2 of 4</span>
-                        <h4 class="text-2xl font-extrabold text-white mt-1" id="step-2-title">Main Test</h4>
-                        
-                        <!-- Instructions Notice Banner -->
-                        <div class="mt-3 p-4 rounded-xl bg-brand-surface border border-brand-border flex items-start space-x-3 text-xs text-gray-300 leading-relaxed">
-                            <i class="fa-solid fa-circle-info text-brand-light text-base mt-0.5 flex-shrink-0"></i>
-                            <div>
-                                <p class="font-semibold text-white mb-1">Instructions & Guidelines:</p>
-                                <p>This is the <strong class="text-white">MAIN TEST</strong>. Here you will have to talk about you and your skills. We recommend you to be as detailed as you can (at least <strong class="text-white">2-3 PHRASES</strong> per answer). We are not going to accept applications with 3 words in each question. Take all the time you need to fill up this application—the more detailed, the better!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dynamic Question Fields Container -->
-                    <div id="dynamic-questions-container" class="space-y-6">
-                        <!-- Questions injected via JS according to active department -->
-                    </div>
-
-                    <!-- RATINGS SECTION -->
-                    <div class="mt-8 pt-6 border-t border-brand-border space-y-6">
-                        
-                        <!-- Rate Activity (1-10) -->
-                        <div>
-                            <label class="block text-sm font-bold text-white mb-2">
-                                Rate your activity. <span class="text-red-500">*</span>
-                            </label>
-                            <div class="flex items-center justify-between text-xs text-gray-400 mb-2 px-1">
-                                <span>1 (Bad activity)</span>
-                                <span>10 (Good activity)</span>
-                            </div>
-                            <div class="grid grid-cols-10 gap-1 md:gap-2">
-                                <template id="rating-template-activity">
-                                    <!-- Injected JS scale -->
-                                </template>
-                                <div id="activity-rating-grid" class="contents"></div>
-                            </div>
-                        </div>
-
-                        <!-- Rate Grammar (1-10) -->
-                        <div>
-                            <label class="block text-sm font-bold text-white mb-2">
-                                Rate your grammar. <span class="text-red-500">*</span>
-                            </label>
-                            <div class="flex items-center justify-between text-xs text-gray-400 mb-2 px-1">
-                                <span>1 (Bad grammar)</span>
-                                <span>10 (Good grammar)</span>
-                            </div>
-                            <div class="grid grid-cols-10 gap-1 md:gap-2">
-                                <div id="grammar-rating-grid" class="contents"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- STEP 3: PRIVACY & POLICY -->
-                <div id="step-3" class="step-content hidden">
-                    <div class="mb-6 border-b border-brand-border pb-4">
-                        <span class="text-xs font-bold tracking-widest text-brand-light uppercase">Section 3 of 4</span>
-                        <h4 class="text-2xl font-extrabold text-white mt-1">Privacy & Policy</h4>
-                        <p class="text-sm text-gray-400 mt-1">Please review and accept our corporate terms and conditions before proceeding.</p>
-                    </div>
-
-                    <!-- Scrollable Terms Box -->
-                    <div class="bg-brand-surface border border-brand-border rounded-xl p-5 mb-6 max-h-60 overflow-y-auto text-xs text-gray-300 space-y-4">
-                        <div>
-                            <h5 class="font-bold text-white text-sm mb-1">1. Acceptance of Terms</h5>
-                            <p>Using the Application implies that you agree to abide by these Terms and Conditions. If you do not agree to them, you must not use the Application. We reserve the right to modify these Terms at any time, and such modifications will become effective upon being posted on the Application. It is your responsibility to review the Terms periodically to be aware of any changes.</p>
-                        </div>
-
-                        <div>
-                            <h5 class="font-bold text-white text-sm mb-1">2. Prohibition of Abuse and Inappropriate Behavior</h5>
-                            <p>As a user, you agree to:</p>
-                            <p class="mt-1">• Not intimidate or discriminate against other users: Any behavior that is perceived as intimidating, abusive, or discriminatory towards other users or companies will be grounds for sanction and possible account cancellation.</p>
-                            <p class="mt-1">• Do not misuse the Application's functionality: You will not use the Application's platform to send spam, unsolicited advertising, or messages that are not related to the job search or selection process.</p>
-                        </div>
-
-                        <div>
-                            <h5 class="font-bold text-white text-sm mb-1">3. Use of Personal Data</h5>
-                            <p>The privacy and security of your personal information is our priority. By using the Application, you agree to our Privacy Policy, which explains how we collect, use, and protect your personal data, including data provided during registration, interactions with other users, and any other activity related to the use of the platform.</p>
-                            <p class="mt-1">• Sharing information: Some data may be shared with potential employers or recruiters, as determined by you during the job search process. By uploading your CV or applying for jobs, you understand that this information may be viewed by third parties.</p>
-                            <p class="mt-1">• Data rights: You have the right to access, correct, and delete your personal data at any time, in accordance with the data protection legislation applicable in your country.</p>
-                        </div>
-
-                        <div>
-                            <h5 class="font-bold text-white text-sm mb-1">4. Contact</h5>
-                            <p>If you have any questions or concerns about these Terms and Conditions, you can contact us through the following means:</p>
-                            <p class="mt-1 font-mono text-gray-200">Email: seamartrobloxcorporation@gmail.com</p>
-                            <p class="font-mono text-gray-200">Discord: https://discord.gg/HPmhWd8YZ7</p>
-                        </div>
-                    </div>
-
-                    <!-- Check / Radio Options -->
-                    <div class="space-y-5 bg-brand-surface/40 p-5 rounded-xl border border-brand-border">
-                        
-                        <!-- Do you accept Terms? -->
-                        <div>
-                            <label class="block text-sm font-bold text-white mb-2">
-                                Do you accept Terms? <span class="text-red-500">*</span>
-                            </label>
-                            <div class="flex items-center space-x-6">
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input type="radio" name="acceptTerms" value="Yes" required class="w-4 h-4 text-brand focus:ring-brand border-brand-border bg-brand-dark">
-                                    <span class="ml-2 text-sm text-gray-300 font-medium">Yes</span>
-                                </label>
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input type="radio" name="acceptTerms" value="No" class="w-4 h-4 text-brand focus:ring-brand border-brand-border bg-brand-dark">
-                                    <span class="ml-2 text-sm text-gray-300 font-medium">No</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Do you accept Conditions? -->
-                        <div>
-                            <label class="block text-sm font-bold text-white mb-2">
-                                Do you accept Conditions? <span class="text-red-500">*</span>
-                            </label>
-                            <div class="flex items-center space-x-6">
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input type="radio" name="acceptConditions" value="Yes" required class="w-4 h-4 text-brand focus:ring-brand border-brand-border bg-brand-dark">
-                                    <span class="ml-2 text-sm text-gray-300 font-medium">Yes</span>
-                                </label>
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input type="radio" name="acceptConditions" value="No" class="w-4 h-4 text-brand focus:ring-brand border-brand-border bg-brand-dark">
-                                    <span class="ml-2 text-sm text-gray-300 font-medium">No</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Age & Verification Confirmation -->
-                        <div>
-                            <label class="block text-sm font-bold text-white mb-2">
-                                Do you confirm that you are at least 13 years old and meet Discord / Roblox age policies? <span class="text-red-500">*</span>
-                            </label>
-                            <div class="flex items-center space-x-6">
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input type="radio" name="acceptAgePolicy" value="Yes" required class="w-4 h-4 text-brand focus:ring-brand border-brand-border bg-brand-dark">
-                                    <span class="ml-2 text-sm text-gray-300 font-medium">Yes</span>
-                                </label>
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input type="radio" name="acceptAgePolicy" value="No" class="w-4 h-4 text-brand focus:ring-brand border-brand-border bg-brand-dark">
-                                    <span class="ml-2 text-sm text-gray-300 font-medium">No</span>
-                                </label>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- STEP 4: SENDING / CONFIRMATION -->
-                <div id="step-4" class="step-content hidden">
-                    <div class="mb-6 border-b border-brand-border pb-4">
-                        <span class="text-xs font-bold tracking-widest text-brand-light uppercase">Section 4 of 4</span>
-                        <h4 class="text-2xl font-extrabold text-white mt-1">Sending Application</h4>
-                        <p class="text-sm text-gray-400 mt-1">You are almost done! Review your status before final submission.</p>
-                    </div>
-
-                    <div class="bg-brand-surface border border-brand-border rounded-xl p-6 text-center space-y-4 mb-6">
-                        <div class="w-16 h-16 bg-brand/20 border border-brand/40 text-brand-light rounded-full flex items-center justify-center mx-auto text-2xl">
-                            <i class="fa-solid fa-paper-plane"></i>
-                        </div>
-                        
-                        <div>
-                            <h5 class="text-lg font-bold text-white">Ready to Submit</h5>
-                            <p class="text-xs text-gray-400 mt-1 max-w-md mx-auto">
-                                Once submitted, your application will be instantly delivered to the SeaMart Leadership Team for review via secure server webhook.
-                            </p>
-                        </div>
-
-                        <!-- Are you sure to send? -->
-                        <div class="pt-4 border-t border-brand-border max-w-sm mx-auto">
-                            <label class="block text-sm font-bold text-white mb-3">
-                                Are you sure you want to send? <span class="text-red-500">*</span>
-                            </label>
-                            <div class="flex items-center justify-center space-x-8">
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input type="radio" name="confirmSend" value="Yes" required class="w-5 h-5 text-brand focus:ring-brand border-brand-border bg-brand-dark">
-                                    <span class="ml-2 text-sm text-white font-bold">Yes, Send Application</span>
-                                </label>
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input type="radio" name="confirmSend" value="No" class="w-5 h-5 text-brand focus:ring-brand border-brand-border bg-brand-dark">
-                                    <span class="ml-2 text-sm text-gray-400 font-medium">No</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Submission Error Alert Banner -->
-                    <div id="submit-error" class="hidden p-4 rounded-xl bg-red-900/30 border border-red-500/50 text-red-200 text-xs flex items-center space-x-3 mb-4">
-                        <i class="fa-solid fa-triangle-exclamation text-base flex-shrink-0"></i>
-                        <span id="submit-error-msg">An error occurred while submitting. Please check your fields and try again.</span>
-                    </div>
-                </div>
-
-                <!-- WIZARD BUTTONS FOOTER -->
-                <div class="mt-8 pt-5 border-t border-brand-border flex items-center justify-between">
-                    <button 
-                        type="button" 
-                        id="prev-btn" 
-                        onclick="navigateStep(-1)" 
-                        class="px-5 py-2.5 rounded-xl border border-brand-border text-xs font-semibold text-gray-300 hover:text-white hover:bg-brand-surface transition-all flex items-center space-x-2 invisible"
-                    >
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <span>Previous</span>
-                    </button>
-
-                    <div class="flex items-center space-x-3">
-                        <button 
-                            type="button" 
-                            onclick="closeModal()" 
-                            class="px-5 py-2.5 rounded-xl text-xs font-semibold text-gray-400 hover:text-white transition-all"
-                        >
-                            Cancel
-                        </button>
-
-                        <button 
-                            type="button" 
-                            id="next-btn" 
-                            onclick="navigateStep(1)" 
-                            class="px-6 py-2.5 rounded-xl bg-brand hover:bg-brand-hover text-white text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center space-x-2"
-                        >
-                            <span>Next Section</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-
-                        <button 
-                            type="submit" 
-                            id="submit-btn" 
-                            class="hidden px-8 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center space-x-2 pulse-btn"
-                        >
-                            <span id="submit-btn-text">Submit Application</span>
-                            <i id="submit-btn-icon" class="fa-solid fa-check"></i>
-                        </button>
-                    </div>
-                </div>
-
-            </form>
+  <!-- MULTI-STEP APPLICATION MODAL -->
+  <div id="app-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-[#0f0f14] border border-white/10 rounded-2xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden relative">
+      
+      <!-- Modal Header (Fixed) -->
+      <div class="p-6 border-b border-white/10 flex justify-between items-center bg-[#13131a]">
+        <div>
+          <span id="modal-dept-badge" class="text-xs uppercase font-bold tracking-widest px-2.5 py-1 rounded bg-white/10 text-gray-300">
+            Department
+          </span>
+          <h2 id="modal-title" class="text-xl font-bold text-white mt-1">Application Form</h2>
         </div>
-    </div>
+        <button id="close-modal-btn" class="text-gray-400 hover:text-white text-2xl font-bold p-2 transition-colors">&times;</button>
+      </div>
 
-    <!-- SUCCESS CONFIRMATION MODAL -->
-    <div id="success-modal" class="fixed inset-0 z-50 hidden overflow-y-auto modal-backdrop flex items-center justify-center p-4">
-        <div class="relative w-full max-w-md bg-brand-card rounded-2xl border border-brand-border p-8 text-center shadow-2xl">
-            <div class="w-20 h-20 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-3xl mb-4">
-                <i class="fa-solid fa-circle-check"></i>
+      <!-- Progress Bar -->
+      <div class="bg-black/40 px-6 py-3 border-b border-white/5 flex items-center justify-between text-xs text-gray-400">
+        <span id="step-indicator">Step 1 of 4</span>
+        <div class="w-48 bg-white/10 h-2 rounded-full overflow-hidden">
+          <div id="progress-bar" class="bg-[#585A8A] h-full w-1/4 transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <!-- Form Body (Scrollable) -->
+      <div id="modal-scroll-body" class="p-6 overflow-y-auto custom-scrollbar flex-grow space-y-6">
+        <form id="application-form" class="space-y-6">
+          
+          <!-- STEP 1: APPLICANT INFORMATION -->
+          <div id="step-1" class="step-content space-y-5">
+            <h3 class="text-lg font-semibold text-[#585A8A] border-b border-white/10 pb-2">Applicant Credentials</h3>
+            
+            <div>
+              <label class="block text-xs uppercase font-bold tracking-wider text-gray-300 mb-2">Roblox Username *</label>
+              <input type="text" id="roblox-username" required class="w-full bg-black/60 border border-white/15 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#585A8A] transition-colors" placeholder="Enter your Roblox Username">
             </div>
-            <h3 class="text-2xl font-black text-white">Application Sent!</h3>
-            <p class="text-xs text-gray-300 mt-2 leading-relaxed">
-                Thank you for applying! Your application has been successfully transmitted via Webhook to our recruitment managers.
+
+            <div>
+              <label class="block text-xs uppercase font-bold tracking-wider text-gray-300 mb-2">Discord Username *</label>
+              <input type="text" id="discord-username" required class="w-full bg-black/60 border border-white/15 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#585A8A] transition-colors" placeholder="e.g. username">
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase font-bold tracking-wider text-gray-300 mb-2">Discord ID *</label>
+              <input type="text" id="discord-id" required class="w-full bg-black/60 border border-white/15 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#585A8A] transition-colors" placeholder="e.g. 123456789012345678">
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase font-bold tracking-wider text-gray-300 mb-2">Roblox User ID *</label>
+              <input type="text" id="roblox-id" required class="w-full bg-black/60 border border-white/15 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#585A8A] transition-colors" placeholder="e.g. 987654321">
+            </div>
+          </div>
+
+          <!-- STEP 2: DYNAMIC QUESTIONS -->
+          <div id="step-2" class="step-content space-y-6 hidden">
+            <h3 class="text-lg font-semibold text-[#585A8A] border-b border-white/10 pb-2">Department Main Test</h3>
+            <p class="text-xs text-gray-400">Please provide detailed responses (at least 2-3 full sentences per text question). Short or vague answers will result in instant denial.</p>
+            <div id="dynamic-questions" class="space-y-6">
+              <!-- Rendered via JavaScript -->
+            </div>
+          </div>
+
+          <!-- STEP 3: TERMS AND CONDITIONS -->
+          <div id="step-3" class="step-content space-y-6 hidden">
+            <h3 class="text-lg font-semibold text-[#585A8A] border-b border-white/10 pb-2">Terms & Conditions</h3>
+            
+            <div class="bg-black/50 p-4 rounded-lg border border-white/10 text-xs text-gray-300 space-y-3 max-h-48 overflow-y-auto custom-scrollbar">
+              <p><strong>1. Acceptance of Terms:</strong> Using this application implies full agreement with SeaMart Corporation terms and policies.</p>
+              <p><strong>2. Prohibition of Abuse:</strong> Intimidation, discrimination, or spamming will lead to immediate blacklist and sanctions.</p>
+              <p><strong>3. Use of Personal Data:</strong> Your data will only be used internally by recruiters for evaluation purposes.</p>
+              <p><strong>4. Contact:</strong> Support email: seamartrobloxcorporation@gmail.com</p>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs uppercase font-bold tracking-wider text-gray-300 mb-2">Do you accept the Terms? *</label>
+                <div class="flex gap-6">
+                  <label class="flex items-center gap-2 cursor-pointer text-sm">
+                    <input type="radio" name="terms_accept" value="Yes" required class="accent-[#585A8A]"> Yes
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer text-sm">
+                    <input type="radio" name="terms_accept" value="No" class="accent-[#585A8A]"> No
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase font-bold tracking-wider text-gray-300 mb-2">Do you accept the Conditions? *</label>
+                <div class="flex gap-6">
+                  <label class="flex items-center gap-2 cursor-pointer text-sm">
+                    <input type="radio" name="conditions_accept" value="Yes" required class="accent-[#585A8A]"> Yes
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer text-sm">
+                    <input type="radio" name="conditions_accept" value="No" class="accent-[#585A8A]"> No
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: CONFIRMATION AND SUBMISSION -->
+          <div id="step-4" class="step-content space-y-6 hidden text-center py-6">
+            <div class="inline-flex p-4 rounded-full bg-[#585A8A]/20 text-[#585A8A] mb-2">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 10 1118 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white">Ready to Submit?</h3>
+            <p class="text-sm text-gray-300 max-w-md mx-auto">
+              Please double check all your answers before submitting. Once submitted, your application will be dispatched directly to our executive team.
             </p>
-            <div class="bg-brand-surface border border-brand-border rounded-xl p-4 my-6 text-xs text-left space-y-2">
-                <div class="flex justify-between">
-                    <span class="text-gray-400">Department:</span>
-                    <span id="success-dept-name" class="font-bold text-white">TMD</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-400">Status:</span>
-                    <span class="text-emerald-400 font-semibold">Under Review</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-400">Discord Notification:</span>
-                    <span class="text-gray-300">Sent to Webhook</span>
-                </div>
+            <div class="pt-4">
+              <label class="block text-xs uppercase font-bold tracking-wider text-gray-300 mb-2">Are you sure you want to send this application? *</label>
+              <div class="flex justify-center gap-6">
+                <label class="flex items-center gap-2 cursor-pointer text-sm">
+                  <input type="radio" name="confirm_send" value="Yes" required class="accent-[#585A8A]"> Yes, send application
+                </label>
+              </div>
             </div>
-            <button 
-                type="button" 
-                onclick="closeSuccessModal()" 
-                class="w-full py-3 rounded-xl bg-brand hover:bg-brand-hover text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg"
-            >
-                Return to Portal
-            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Modal Controls (Fixed) -->
+      <div class="p-6 border-t border-white/10 bg-[#13131a] flex justify-between items-center">
+        <button id="prev-btn" type="button" class="px-5 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors hidden">
+          Back
+        </button>
+        <div class="ml-auto flex gap-3">
+          <button id="next-btn" type="button" class="px-6 py-2.5 rounded-lg bg-[#585A8A] hover:bg-[#464870] text-white font-semibold text-sm transition-colors">
+            Next Step
+          </button>
+          <button id="submit-btn" type="button" class="px-6 py-2.5 rounded-lg bg-green-600 hover:bg-green-700 text-white font-semibold text-sm transition-colors hidden">
+            Submit Application
+          </button>
         </div>
+      </div>
+
     </div>
+  </div>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // =========================================================================
-        // DISCORD WEBHOOK CONFIGURATION
-        // =========================================================================
-        const WEBHOOK_URL = "https://discord.com/api/webhooks/1557797511073112196/gPVil_DGDgrt78qTTN3A1Gy8Jqu-YKnEBlryuEwBL1SH5yMVpTD7CYRLGRqlQjEhy2sz";
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1557797511073112196/gPVil_DGDgrt78qTTN3A1Gy8Jqu-YKnEBlryuEwBL1SH5yMVpTD7CYRLGRqlQjEhy2sz";
 
-        // =========================================================================
-        // CONFIGURABLE DEPARTMENT SYSTEM
-        // You can easily enable/disable applications by toggling `isOpen: true/false`
-        // =========================================================================
-        const DEPARTMENTS = [
-            {
-                id: "smd",
-                code: "SMD",
-                name: "Staff Management Department",
-                badgeColor: "#EF4444",
-                cardClass: "card-smd",
-                isOpen: true, // <--- SET TO true / false TO OPEN OR CLOSE
-                icon: "fa-users-gear",
-                description: "Oversees general staff conduct, internal promotions, activity logs, and administrative discipline across all servers.",
-                embedColor: 15680068, // Hex #EF4444 in Decimal
-                questions: [
-                    { id: "q_talk_about_you", label: "Talk about you.", placeholder: "Tell us about yourself, your background in Roblox, and your overall goals..." },
-                    { id: "q_why_smd", label: "Why do you want to join the Staff Management Department?", placeholder: "Explain your motivation for choosing SMD over other departments..." },
-                    { id: "q_past_exp", label: "Do you have past experience in staff management?", placeholder: "Detail previous staff management or moderation roles you held..." },
-                    { id: "q_sw", label: "Write 3 Strengths and 3 Weaknesses.", placeholder: "List 3 clear strengths and 3 honest weaknesses about yourself..." },
-                    { id: "q_what_smd_do", label: "What do Staff Managers do?", placeholder: "Describe the primary daily duties and responsibilities of Staff Managers..." },
-                    { id: "q_extra", label: "Type extra information.", placeholder: "Any additional details or comments you would like us to know..." }
-                ]
-            },
-            {
-                id: "gmd",
-                code: "GMD",
-                name: "Game Management Team",
-                badgeColor: "#3B82F6",
-                cardClass: "card-gmd",
-                isOpen: true, // <--- SET TO true / false TO OPEN OR CLOSE
-                icon: "fa-gamepad",
-                description: "Manages in-game operations, customer experience, HR moderation, and maintaining server discipline during shifts.",
-                embedColor: 3899638, // Hex #3B82F6 in Decimal
-                questions: [
-                    { id: "q_talk_about_you", label: "Talk about you.", placeholder: "Provide a brief introduction about yourself and your Roblox presence..." },
-                    { id: "q_why_seamart", label: "Why SeaMart instead of other servers?", placeholder: "Explain why you want to contribute specifically to SeaMart..." },
-                    { id: "q_past_exp", label: "Do you have any experiences?", placeholder: "List relevant experience in game management or human resources..." },
-                    { id: "q_sw", label: "Write 3 strengths or more and 3 weaknesses or more.", placeholder: "Detail at least 3 strengths and at least 3 weaknesses..." },
-                    { id: "q_what_gmd_do", label: "What do Game Management / HR members do?", placeholder: "Explain what HR and Game Management staff do on a daily basis..." },
-                    { id: "q_extra", label: "Type extra information.", placeholder: "Any final notes or supplementary details..." }
-                ]
-            },
-            {
-                id: "prd",
-                code: "PRD",
-                name: "Public Relations Department",
-                badgeColor: "#EC4899",
-                cardClass: "card-prd",
-                isOpen: true, // <--- SET TO true / false TO OPEN OR CLOSE
-                icon: "fa-bullhorn",
-                description: "Handles corporate alliances, public announcements, community events, social media, and affiliate partnerships.",
-                embedColor: 15485081, // Hex #EC4899 in Decimal
-                questions: [
-                    { id: "q_talk_about_you", label: "Talk about you.", placeholder: "Introduce yourself, your interests, and your communication style..." },
-                    { id: "q_why_prd", label: "Why do you want to join the Public Relations Department?", placeholder: "Describe what draws you to handling PR and external relations..." },
-                    { id: "q_past_exp", label: "Do you have past experience with PR, events, or alliances?", placeholder: "Detail your background in managing allies, events, or community outreach..." },
-                    { id: "q_sw", label: "Write 3 Strengths and 3 Weaknesses.", placeholder: "List 3 key strengths and 3 weaknesses..." },
-                    { id: "q_what_prd_do", label: "What do Public Relations Managers do?", placeholder: "Detail the responsibilities of PR Managers in maintaining alliances and image..." },
-                    { id: "q_extra", label: "Type extra information.", placeholder: "Any extra comments or ideas for SeaMart PR..." }
-                ]
-            },
-            {
-                id: "tmd",
-                code: "TMD",
-                name: "Training Management Department",
-                badgeColor: "#10B981",
-                cardClass: "card-tmd",
-                isOpen: true, // <--- SET TO true / false TO OPEN OR CLOSE
-                icon: "fa-graduation-cap",
-                description: "Leads training sessions, trains new staff members, manages server locks, host/trainer panels, and enforces grading standards.",
-                embedColor: 1095937, // Hex #10B981 in Decimal
-                questions: [
-                    { id: "q_why_tmd", label: "Why do you want to become part from Training Management Department?", placeholder: "Detail your reasons for wanting to educate and guide new staff..." },
-                    { id: "q_past_exp", label: "Do you have past experience?", placeholder: "Explain your experience hosting, training, or managing training panels..." },
-                    { id: "q_talk_about_you", label: "Talk about you.", placeholder: "Share information regarding your personality, active hours, and teamwork skills..." },
-                    { id: "q_sw", label: "Write 3 Strengths and Weaknesses.", placeholder: "List 3 clear strengths and 3 realistic weaknesses..." },
-                    { id: "q_what_tmd_do", label: "What Training Managers do?", placeholder: "Describe the role of Training Managers, server locks, and panel supervision..." },
-                    { id: "q_extra", label: "Type extra information.", placeholder: "Insert any extra details to support your application..." }
-                ]
+    // DEPARTMENT CONFIGURATION (Set isOpen to true or false to enable/disable applications)
+    const DEPARTMENTS = [
+      {
+        id: "smd",
+        name: "Staff Management Department",
+        tag: "SMD",
+        colorClass: "dept-smd",
+        colorHex: 0xef4444,
+        isOpen: true,
+        description: "Manage staff activity, process promotions, handle tickets, and enforce corporate quotas.",
+        questions: [
+          { id: "q1", label: "Talk about yourself.", type: "textarea", placeholder: "Detail your experience and key traits..." },
+          { id: "q2", label: "Why SeaMart instead of other servers?", type: "textarea", placeholder: "Explain what makes SeaMart unique for you..." },
+          { id: "q3", label: "Do you have any past experiences?", type: "textarea", placeholder: "List previous positions and servers..." },
+          { id: "q4", label: "Write at least 3 strengths and 3 weaknesses.", type: "textarea", placeholder: "Format clearly with bullet points or numbers..." },
+          { id: "q5", label: "What do Staff Management members do?", type: "textarea", placeholder: "Explain the daily duties of an SMD member..." },
+          { id: "q6", label: "Type extra information.", type: "textarea", placeholder: "Any additional details you wish to share..." },
+          { id: "q7", label: "Rate your activity (1-10)", type: "scale" },
+          { id: "q8", label: "Rate your grammar (1-10)", type: "scale" }
+        ]
+      },
+      {
+        id: "gmd",
+        name: "Game Management Team",
+        tag: "GMD / SHRD",
+        colorClass: "dept-gmd",
+        colorHex: 0x3b82f6,
+        isOpen: true,
+        description: "Oversee staff operations, handle high-tier disputes, and maintain in-game moderation integrity.",
+        questions: [
+          { id: "q1", label: "Talk about yourself.", type: "textarea", placeholder: "Describe your background and personality..." },
+          { id: "q2", label: "Why SeaMart instead of other servers?", type: "textarea", placeholder: "Explain your interest in SeaMart HR/GMD..." },
+          { id: "q3", label: "Do you have any past experiences? (If yes, tell where)", type: "textarea", placeholder: "Detail past experience..." },
+          { id: "q4", label: "Write 3 strengths or more and 3 weaknesses or more.", type: "textarea", placeholder: "Detail strengths and weaknesses..." },
+          { id: "q5", label: "What do Human Resources / Game Management do?", type: "textarea", placeholder: "Describe core HR responsibilities..." },
+          { id: "q6", label: "Type extra information.", type: "textarea", placeholder: "Any extra details..." },
+          { id: "q7", label: "Rate your activity (1-10)", type: "scale" },
+          { id: "q8", label: "Rate your grammar (1-10)", type: "scale" }
+        ]
+      },
+      {
+        id: "prd",
+        name: "Public Relations Department",
+        tag: "PRD",
+        colorClass: "dept-prd",
+        colorHex: 0xec4899,
+        isOpen: true,
+        description: "Handle corporate alliances, community events, public communications, and server marketing.",
+        questions: [
+          { id: "q1", label: "Why do you want to join Public Relations?", type: "textarea", placeholder: "Explain your interest in PR..." },
+          { id: "q2", label: "Do you have experience in alliance or event management?", type: "textarea", placeholder: "Detail your alliance experience..." },
+          { id: "q3", label: "Talk about yourself.", type: "textarea", placeholder: "Describe yourself..." },
+          { id: "q4", label: "Write 3 Strengths and 3 Weaknesses.", type: "textarea", placeholder: "List strengths and weaknesses..." },
+          { id: "q5", label: "What do Public Relations Officers do?", type: "textarea", placeholder: "Explain the duties of PR..." },
+          { id: "q6", label: "Type extra information.", type: "textarea", placeholder: "Additional details..." },
+          { id: "q7", label: "Rate your activity (1-10)", type: "scale" },
+          { id: "q8", label: "Rate your grammar (1-10)", type: "scale" }
+        ]
+      },
+      {
+        id: "tmd",
+        name: "Training Management Department",
+        tag: "TMD",
+        colorClass: "dept-tmd",
+        colorHex: 0x22c55e,
+        isOpen: true,
+        description: "Host official trainings, manage trainer panels, lock server ranks, and evaluate new employees.",
+        questions: [
+          { id: "q1", label: "Why do you want to become part of Training Management?", type: "textarea", placeholder: "Explain your interest in TMD..." },
+          { id: "q2", label: "Do you have past experience?", type: "textarea", placeholder: "Detail past training experience..." },
+          { id: "q3", label: "Talk about you.", type: "textarea", placeholder: "Describe yourself..." },
+          { id: "q4", label: "Write 3 Strengths and Weaknesses.", type: "textarea", placeholder: "List 3 strengths and 3 weaknesses..." },
+          { id: "q5", label: "What do Training Managers do?", type: "textarea", placeholder: "Explain TMD duties (training, server locks, grading)..." },
+          { id: "q6", label: "Type extra information.", type: "textarea", placeholder: "Extra information..." },
+          { id: "q7", label: "Rate your activity (1-10)", type: "scale" },
+          { id: "q8", label: "Rate your grammar (1-10)", type: "scale" }
+        ]
+      }
+    ];
+
+    let currentStep = 1;
+    let selectedDepartment = null;
+
+    // DOM ELEMENTS
+    const gridContainer = document.getElementById("departments-grid");
+    const modal = document.getElementById("app-modal");
+    const closeModalBtn = document.getElementById("close-modal-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const submitBtn = document.getElementById("submit-btn");
+    const modalScrollBody = document.getElementById("modal-scroll-body");
+    const dynamicQuestionsContainer = document.getElementById("dynamic-questions");
+    const stepIndicator = document.getElementById("step-indicator");
+    const progressBar = document.getElementById("progress-bar");
+
+    // RENDER DEPARTMENT CARDS
+    function renderDepartments() {
+      gridContainer.innerHTML = "";
+      DEPARTMENTS.forEach(dept => {
+        const card = document.createElement("div");
+        card.className = `dept-card ${dept.colorClass} rounded-2xl p-6 flex flex-col justify-between`;
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold tracking-widest uppercase text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                ${dept.tag}
+              </span>
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full ${dept.isOpen ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}">
+                <span class="w-1.5 h-1.5 rounded-full ${dept.isOpen ? 'bg-green-400 animate-pulse' : 'bg-red-400'}"></span>
+                ${dept.isOpen ? 'APPLICATIONS OPEN' : 'CLOSED'}
+              </span>
+            </div>
+            <h2 class="text-xl font-bold text-white mb-2">${dept.name}</h2>
+            <p class="text-xs text-gray-400 leading-relaxed mb-6">${dept.description}</p>
+          </div>
+          <button 
+            onclick="openApplication('${dept.id}')"
+            ${!dept.isOpen ? 'disabled' : ''}
+            class="w-full py-3 rounded-xl font-bold text-sm tracking-wider uppercase transition-all duration-300 ${dept.isOpen ? 'bg-[#585A8A] hover:bg-[#464870] text-white shadow-lg' : 'bg-white/5 text-gray-500 cursor-not-allowed border border-white/5'}">
+            ${dept.isOpen ? 'Apply Now' : 'Currently Unavailable'}
+          </button>
+        `;
+        gridContainer.appendChild(card);
+      });
+    }
+
+    // OPEN APPLICATION MODAL
+    window.openApplication = function(deptId) {
+      selectedDepartment = DEPARTMENTS.find(d => d.id === deptId);
+      if (!selectedDepartment || !selectedDepartment.isOpen) return;
+
+      document.getElementById("modal-dept-badge").innerText = selectedDepartment.tag;
+      document.getElementById("modal-title").innerText = selectedDepartment.name;
+
+      renderDynamicQuestions(selectedDepartment.questions);
+      currentStep = 1;
+      updateStepView();
+
+      modal.classList.remove("hidden");
+    };
+
+    // RENDER STEP 2 QUESTIONS
+    function renderDynamicQuestions(questions) {
+      dynamicQuestionsContainer.innerHTML = "";
+      questions.forEach((q, idx) => {
+        const qBox = document.createElement("div");
+        qBox.className = "bg-black/40 border border-white/10 rounded-xl p-4 space-y-2";
+
+        if (q.type === "textarea") {
+          qBox.innerHTML = `
+            <label class="block text-xs uppercase font-bold tracking-wider text-gray-200">
+              ${idx + 1}. ${q.label} <span class="text-red-400">*</span>
+            </label>
+            <textarea id="${q.id}" required rows="3" class="w-full bg-black/60 border border-white/15 rounded-lg p-3 text-white text-sm focus:outline-none focus:border-[#585A8A] transition-colors" placeholder="${q.placeholder || ''}"></textarea>
+            <p class="text-[10px] text-gray-500">Minimum guidance: 2-3 detailed sentences expected.</p>
+          `;
+        } else if (q.type === "scale") {
+          let scaleRadios = '';
+          for (let i = 1; i <= 10; i++) {
+            scaleRadios += `
+              <label class="flex flex-col items-center gap-1 cursor-pointer">
+                <span class="text-xs text-gray-400">${i}</span>
+                <input type="radio" name="${q.id}" value="${i}" required class="accent-[#585A8A]">
+              </label>
+            `;
+          }
+          qBox.innerHTML = `
+            <label class="block text-xs uppercase font-bold tracking-wider text-gray-200 mb-2">
+              ${idx + 1}. ${q.label} <span class="text-red-400">*</span>
+            </label>
+            <div class="flex items-center justify-between bg-black/60 p-3 rounded-lg border border-white/10 overflow-x-auto">
+              ${scaleRadios}
+            </div>
+          `;
+        }
+        dynamicQuestionsContainer.appendChild(qBox);
+      });
+    }
+
+    // UPDATE STEP VIEW AND SCROLL TO TOP
+    function updateStepView() {
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById(`step-${i}`).classList.add("hidden");
+      }
+
+      document.getElementById(`step-${currentStep}`).classList.remove("hidden");
+
+      // Reset scroll position to top so Step 2 questions are visible from the start
+      modalScrollBody.scrollTop = 0;
+
+      stepIndicator.innerText = `Step ${currentStep} of 4`;
+      progressBar.style.width = `${(currentStep / 4) * 100}%`;
+
+      prevBtn.classList.toggle("hidden", currentStep === 1);
+      nextBtn.classList.toggle("hidden", currentStep === 4);
+      submitBtn.classList.toggle("hidden", currentStep !== 4);
+    }
+
+    // VALIDATE STEP INPUTS
+    function validateStep(step) {
+      if (step === 1) {
+        const inputs = ["roblox-username", "discord-username", "discord-id", "roblox-id"];
+        for (let id of inputs) {
+          const val = document.getElementById(id).value.trim();
+          if (!val) {
+            alert("Please complete all applicant details before proceeding.");
+            return false;
+          }
+        }
+      } else if (step === 2) {
+        for (let q of selectedDepartment.questions) {
+          if (q.type === "textarea") {
+            const val = document.getElementById(q.id).value.trim();
+            if (!val) {
+              alert(`Please answer question: "${q.label}"`);
+              return false;
             }
-        ];
+          } else if (q.type === "scale") {
+            const selected = document.querySelector(`input[name="${q.id}"]:checked`);
+            if (!selected) {
+              alert(`Please rate: "${q.label}"`);
+              return false;
+            }
+          }
+        }
+      } else if (step === 3) {
+        const terms = document.querySelector('input[name="terms_accept"]:checked');
+        const cond = document.querySelector('input[name="conditions_accept"]:checked');
+        if (!terms || terms.value !== "Yes" || !cond || cond.value !== "Yes") {
+          alert("You must accept both Terms and Conditions to proceed.");
+          return false;
+        }
+      }
+      return true;
+    }
 
-        // Global State Variables
-        let currentStep = 1;
-        let activeDepartment = null;
+    // NAVIGATION EVENT LISTENERS
+    nextBtn.addEventListener("click", () => {
+      if (validateStep(currentStep)) {
+        if (currentStep < 4) {
+          currentStep++;
+          updateStepView();
+        }
+      }
+    });
 
-        // Initialize UI on DOM Content Loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            renderDepartmentCards();
-            setupRatingGrids();
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 1) {
+        currentStep--;
+        updateStepView();
+      }
+    });
+
+    closeModalBtn.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+
+    // DISCORD WEBHOOK SUBMISSION
+    submitBtn.addEventListener("click", async () => {
+      const confirmSend = document.querySelector('input[name="confirm_send"]:checked');
+      if (!confirmSend || confirmSend.value !== "Yes") {
+        alert("Please confirm that you are sure you want to send your application.");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
+
+      const fields = [
+        { name: "Roblox Username", value: document.getElementById("roblox-username").value, inline: true },
+        { name: "Discord Username", value: document.getElementById("discord-username").value, inline: true },
+        { name: "Discord ID", value: document.getElementById("discord-id").value, inline: true },
+        { name: "Roblox ID", value: document.getElementById("roblox-id").value, inline: true }
+      ];
+
+      selectedDepartment.questions.forEach((q, idx) => {
+        let answer = "";
+        if (q.type === "textarea") {
+          answer = document.getElementById(q.id).value;
+        } else if (q.type === "scale") {
+          answer = document.querySelector(`input[name="${q.id}"]:checked`)?.value + " / 10";
+        }
+        fields.push({
+          name: `${idx + 1}. ${q.label}`,
+          value: answer.length > 1024 ? answer.substring(0, 1021) + "..." : answer,
+          inline: false
+        });
+      });
+
+      const payload = {
+        embeds: [{
+          title: `New Application: ${selectedDepartment.name}`,
+          color: selectedDepartment.colorHex,
+          fields: fields,
+          footer: { text: "SeaMart Corporation | Careers Portal" },
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      try {
+        const response = await fetch(DISCORD_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
         });
 
-        // Function to dynamically render Department Cards
-        function renderDepartmentCards() {
-            const container = document.getElementById('departments-grid');
-            container.innerHTML = '';
-
-            DEPARTMENTS.forEach(dept => {
-                const isAvailable = dept.isOpen;
-                
-                const cardHtml = `
-                    <div class="bg-brand-card rounded-2xl p-6 border border-brand-border ${dept.cardClass} flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
-                        <!-- Top Header info -->
-                        <div>
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="w-12 h-12 rounded-xl bg-brand-surface border border-brand-border flex items-center justify-center text-xl text-white">
-                                    <i class="fa-solid ${dept.icon}"></i>
-                                </div>
-                                <span class="px-3 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase ${isAvailable ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'}">
-                                    ${isAvailable ? '<i class="fa-solid fa-circle text-[8px] mr-1"></i> OPEN' : '<i class="fa-solid fa-lock text-[8px] mr-1"></i> CLOSED'}
-                                </span>
-                            </div>
-
-                            <span class="text-xs font-bold tracking-wider uppercase text-gray-400">${dept.code}</span>
-                            <h3 class="text-lg font-bold text-white mt-0.5 mb-2 group-hover:text-gray-100 transition-colors">${dept.name}</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed mb-6 font-light">
-                                ${dept.description}
-                            </p>
-                        </div>
-
-                        <!-- Action Button -->
-                        <div>
-                            <button 
-                                type="button" 
-                                onclick="${isAvailable ? `openApplication('${dept.id}')` : ''}"
-                                ${!isAvailable ? 'disabled' : ''}
-                                class="w-full py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center justify-center space-x-2 ${
-                                    isAvailable 
-                                    ? 'bg-brand hover:bg-brand-hover text-white shadow-lg cursor-pointer' 
-                                    : 'bg-brand-surface text-gray-500 border border-brand-border cursor-not-allowed opacity-60'
-                                }"
-                            >
-                                <span>${isAvailable ? 'Apply Now' : 'Applications Closed'}</span>
-                                ${isAvailable ? '<i class="fa-solid fa-arrow-right text-xs"></i>' : '<i class="fa-solid fa-lock text-xs"></i>'}
-                            </button>
-                        </div>
-                    </div>
-                `;
-                container.insertAdjacentHTML('beforeend', cardHtml);
-            });
+        if (response.ok) {
+          alert("Application submitted successfully! Our leadership team will review it shortly.");
+          modal.classList.add("hidden");
+          document.getElementById("application-form").reset();
+        } else {
+          alert("Error sending application to Discord. Please contact staff directly.");
         }
+      } catch (err) {
+        console.error(err);
+        alert("Failed to submit. Check your network connection.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Submit Application";
+      }
+    });
 
-        // Function to create rating scale radios (1-10)
-        function setupRatingGrids() {
-            const activityGrid = document.getElementById('activity-rating-grid');
-            const grammarGrid = document.getElementById('grammar-rating-grid');
-
-            activityGrid.innerHTML = '';
-            grammarGrid.innerHTML = '';
-
-            for (let i = 1; i <= 10; i++) {
-                // Activity Radio
-                activityGrid.insertAdjacentHTML('beforeend', `
-                    <div class="scale-radio text-center">
-                        <input type="radio" id="act-${i}" name="activityRating" value="${i}" ${i === 10 ? 'checked' : ''} required class="hidden">
-                        <label for="act-${i}" class="block w-full py-2.5 rounded-lg bg-brand-surface border border-brand-border text-xs text-gray-300 cursor-pointer hover:border-brand-light transition-all">
-                            ${i}
-                        </label>
-                    </div>
-                `);
-
-                // Grammar Radio
-                grammarGrid.insertAdjacentHTML('beforeend', `
-                    <div class="scale-radio text-center">
-                        <input type="radio" id="grm-${i}" name="grammarRating" value="${i}" ${i === 10 ? 'checked' : ''} required class="hidden">
-                        <label for="grm-${i}" class="block w-full py-2.5 rounded-lg bg-brand-surface border border-brand-border text-xs text-gray-300 cursor-pointer hover:border-brand-light transition-all">
-                            ${i}
-                        </label>
-                    </div>
-                `);
-            }
-        }
-
-        // Function to open application modal
-        function openApplication(deptId) {
-            activeDepartment = DEPARTMENTS.find(d => d.id === deptId);
-            if (!activeDepartment || !activeDepartment.isOpen) return;
-
-            // Reset step
-            currentStep = 1;
-            document.getElementById('application-form').reset();
-            setupRatingGrids(); // restore default rating selection
-
-            // Update Header details
-            document.getElementById('modal-dept-badge').textContent = activeDepartment.code;
-            document.getElementById('modal-dept-badge').style.backgroundColor = activeDepartment.badgeColor;
-            document.getElementById('modal-dept-title').textContent = `${activeDepartment.name} Application`;
-
-            // Populate Questions for Step 2
-            const questionsContainer = document.getElementById('dynamic-questions-container');
-            questionsContainer.innerHTML = '';
-
-            activeDepartment.questions.forEach((q, idx) => {
-                const questionHtml = `
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">
-                            ${q.label} <span class="text-red-500">*</span>
-                        </label>
-                        <textarea 
-                            name="${q.id}" 
-                            rows="3" 
-                            required 
-                            placeholder="${q.placeholder}" 
-                            class="w-full p-3.5 rounded-xl form-input text-sm resize-y leading-relaxed"
-                        ></textarea>
-                        <span class="text-[11px] text-gray-500 mt-1 block">Minimum guidance: 2-3 detailed sentences expected.</span>
-                    </div>
-                `;
-                questionsContainer.insertAdjacentHTML('beforeend', questionHtml);
-            });
-
-            // Update UI step display
-            updateWizardUI();
-
-            // Show modal
-            document.getElementById('application-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Close Application Modal
-        function closeModal() {
-            document.getElementById('application-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            document.getElementById('submit-error').classList.add('hidden');
-        }
-
-        // Close Success Modal
-        function closeSuccessModal() {
-            document.getElementById('success-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Step Navigation Function
-        function navigateStep(direction) {
-            if (direction === 1) {
-                if (!validateStep(currentStep)) {
-                    return;
-                }
-            }
-
-            currentStep += direction;
-            if (currentStep < 1) currentStep = 1;
-            if (currentStep > 4) currentStep = 4;
-
-            updateWizardUI();
-        }
-
-        // Validate required fields in the current step
-        function validateStep(stepNumber) {
-            const currentStepEl = document.getElementById(`step-${stepNumber}`);
-            const inputs = currentStepEl.querySelectorAll('input[required], textarea[required]');
-            let isValid = true;
-            let firstInvalid = null;
-
-            inputs.forEach(input => {
-                if (input.type === 'radio') {
-                    const radioGroup = currentStepEl.querySelectorAll(`input[name="${input.name}"]`);
-                    const checked = Array.from(radioGroup).some(r => r.checked);
-                    if (!checked) {
-                        isValid = false;
-                        if (!firstInvalid) firstInvalid = radioGroup[0];
-                    }
-                } else if (!input.value.trim()) {
-                    input.classList.add('border-red-500');
-                    isValid = false;
-                    if (!firstInvalid) firstInvalid = input;
-                } else {
-                    input.classList.remove('border-red-500');
-                }
-            });
-
-            if (!isValid) {
-                if (firstInvalid) {
-                    firstInvalid.focus();
-                }
-                showTemporaryError("Please fill out all required fields before proceeding to the next section.");
-            } else {
-                hideTemporaryError();
-            }
-
-            return isValid;
-        }
-
-        function showTemporaryError(msg) {
-            const errDiv = document.getElementById('submit-error');
-            document.getElementById('submit-error-msg').textContent = msg;
-            errDiv.classList.remove('hidden');
-        }
-
-        function hideTemporaryError() {
-            document.getElementById('submit-error').classList.add('hidden');
-        }
-
-        // Update Wizard UI elements according to active step
-        function updateWizardUI() {
-            // Hide all steps
-            for (let i = 1; i <= 4; i++) {
-                document.getElementById(`step-${i}`).classList.add('hidden');
-            }
-
-            // Show active step
-            document.getElementById(`step-${currentStep}`).classList.remove('hidden');
-
-            // Update step indicator
-            document.getElementById('modal-section-indicator').textContent = `Section ${currentStep} of 4`;
-
-            // Update Progress Bar
-            const progressPercent = (currentStep / 4) * 100;
-            document.getElementById('modal-progress-bar').style.width = `${progressPercent}%`;
-
-            // Update Navigation Buttons Visibility
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-            const submitBtn = document.getElementById('submit-btn');
-
-            if (currentStep === 1) {
-                prevBtn.classList.add('invisible');
-            } else {
-                prevBtn.classList.remove('invisible');
-            }
-
-            if (currentStep === 4) {
-                nextBtn.classList.add('hidden');
-                submitBtn.classList.remove('hidden');
-            } else {
-                nextBtn.classList.remove('hidden');
-                submitBtn.classList.add('hidden');
-            }
-
-            // Scroll modal to top
-            document.getElementById('application-modal').querySelector('.relative').scrollTop = 0;
-        }
-
-        // Handle Form Submission
-        async function handleFormSubmit(e) {
-            e.preventDefault();
-
-            if (!validateStep(4)) return;
-
-            const form = document.getElementById('application-form');
-            const formData = new FormData(form);
-
-            const robloxUsername = formData.get('robloxUsername');
-            const robloxId = formData.get('robloxId');
-            const discordUsername = formData.get('discordUsername');
-            const discordId = formData.get('discordId');
-
-            const activityRating = formData.get('activityRating');
-            const grammarRating = formData.get('grammarRating');
-
-            const confirmSend = formData.get('confirmSend');
-            if (confirmSend !== 'Yes') {
-                showTemporaryError("You must select 'Yes, Send Application' to submit.");
-                return;
-            }
-
-            // Build Discord Embed Fields
-            const fields = [
-                {
-                    name: "👤 Applicant Credentials",
-                    value: `**Roblox:** [${robloxUsername}](https://www.roblox.com/users/${robloxId}/profile) (ID: \`${robloxId}\`)\n**Discord:** ${discordUsername} (\`<@${discordId}>\` / ID: \`${discordId}\`)`,
-                    inline: false
-                }
-            ];
-
-            // Add Questions & Answers
-            activeDepartment.questions.forEach(q => {
-                const answer = formData.get(q.id) || "N/A";
-                fields.push({
-                    name: `❓ ${q.label}`,
-                    value: answer.length > 1024 ? answer.substring(0, 1021) + "..." : answer,
-                    inline: false
-                });
-            });
-
-            // Add Activity & Grammar ratings
-            fields.push(
-                {
-                    name: "📊 Activity Rating",
-                    value: `**${activityRating}** / 10`,
-                    inline: true
-                },
-                {
-                    name: "📝 Grammar Rating",
-                    value: `**${grammarRating}** / 10`,
-                    inline: true
-                },
-                {
-                    name: "📜 Terms Accepted",
-                    value: "✅ Yes (Terms, Conditions, Age +13 Verification)",
-                    inline: false
-                }
-            );
-
-            // Construct Discord Payload Object
-            const discordPayload = {
-                username: "SeaMart Recruitment Portal",
-                avatar_url: "https://i.imgur.com/8N4X1y0.png",
-                embeds: [
-                    {
-                        title: `📌 New Application: ${activeDepartment.name} (${activeDepartment.code})`,
-                        description: `A new candidate has submitted a corporate application for **${activeDepartment.name}**.`,
-                        color: activeDepartment.embedColor || 5802634,
-                        fields: fields,
-                        footer: {
-                            text: "SeaMart Careers Portal • Automated Webhook Submission",
-                            icon_url: "https://i.imgur.com/8N4X1y0.png"
-                        },
-                        timestamp: new Date().toISOString()
-                    }
-                ]
-            };
-
-            // Toggle Loading UI
-            const submitBtnText = document.getElementById('submit-btn-text');
-            const submitBtnIcon = document.getElementById('submit-btn-icon');
-            const submitBtn = document.getElementById('submit-btn');
-
-            submitBtnText.textContent = "Sending...";
-            submitBtnIcon.className = "fa-solid fa-spinner fa-spin";
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(discordPayload)
-                });
-
-                if (response.ok || response.status === 204) {
-                    closeModal();
-                    document.getElementById('success-dept-name').textContent = activeDepartment.name;
-                    document.getElementById('success-modal').classList.remove('hidden');
-                } else {
-                    throw new Error(`Server returned HTTP ${response.status}`);
-                }
-            } catch (err) {
-                console.error("Webhook submit error:", err);
-                showTemporaryError(`Submission failed. Unable to communicate with Discord Webhook (${err.message}).`);
-            } finally {
-                submitBtnText.textContent = "Submit Application";
-                submitBtnIcon.className = "fa-solid fa-check";
-                submitBtn.disabled = false;
-            }
-        }
-    </script>
+    // INITIALIZE
+    renderDepartments();
+  </script>
 </body>
 </html>
