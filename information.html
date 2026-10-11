@@ -1,60 +1,386 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon - SeaMart Corporation</title>
+    <title>Information - SeaMart Corporation</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Google Fonts: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#585A8A',
+                            hover: '#474972',
+                            light: '#787AA5',
+                            dark: '#3C3E5F'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
         body {
-            background-color: #585A8A;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b0c10;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        
+        .hero-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #ffffff;
+            background: linear-gradient(to bottom, rgba(11, 12, 16, 0.75), rgba(11, 12, 16, 0.95)), url('hero-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            z-index: -1;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
+        .bottom-shadow {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, #0b0c10, transparent);
+            z-index: -1;
+            pointer-events: none;
         }
 
-        .btn-back {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .glass-card {
+            background: rgba(20, 21, 30, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(88, 90, 138, 0.25);
         }
 
-        .btn-back:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        .glass-card:hover {
+            border-color: rgba(88, 90, 138, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(88, 90, 138, 0.15);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0c10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #585A8A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #474972;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#585A8A] selection:text-white">
 
-    <h1>COMING SOON</h1>
-    <a href="index.html" class="btn-back">Go back</a>
+    <div class="hero-background"></div>
+    <div class="bottom-shadow"></div>
+
+    <header class="w-full pt-16 pb-10 px-4 text-center relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-flex items-center justify-center p-3 rounded-2xl bg-[#585A8A]/20 border border-[#585A8A]/40 mb-6 shadow-lg shadow-[#585A8A]/10">
+                <svg class="w-8 h-8 text-[#787AA5]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-3">Information</h1>
+            <p class="text-lg md:text-xl text-gray-300 font-medium">Need extra help? Open a ticket.</p>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16 space-y-16 relative z-10">
+
+        <section id="rules" class="space-y-6">
+            <div class="flex items-center space-x-3 border-b border-[#585A8A]/40 pb-4">
+                <span class="w-3 h-3 rounded-full bg-[#585A8A] animate-pulse"></span>
+                <h2 class="text-2xl md:text-3xl font-bold text-white tracking-wide">Rules</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Rule 1 -->
+                <div class="glass-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-lg font-semibold text-white mb-2 flex items-center">
+                        <span class="text-[#787AA5] mr-2">#</span> Be Respectful
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">Treat all members with respect and kindness. No hate speech, discrimination, or harassment will be tolerated.</p>
+                </div>
+
+                <!-- Rule 2 -->
+                <div class="glass-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-lg font-semibold text-white mb-2 flex items-center">
+                        <span class="text-[#787AA5] mr-2">#</span> No Spam
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">Do not flood channels with excessive messages or advertisements. Keep self-promotion to designated channels, if allowed.</p>
+                </div>
+
+                <!-- Rule 3 -->
+                <div class="glass-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-lg font-semibold text-white mb-2 flex items-center">
+                        <span class="text-[#787AA5] mr-2">#</span> Stay On Topic
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">Keep conversations in the appropriate channels. Avoid derailing discussions with unrelated topics.</p>
+                </div>
+
+                <!-- Rule 4 -->
+                <div class="glass-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-lg font-semibold text-white mb-2 flex items-center">
+                        <span class="text-[#787AA5] mr-2">#</span> No Trolling or Flaming
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">Do not engage in trolling or flame wars. Respect differing opinions and engage in constructive discussions.</p>
+                </div>
+
+                <!-- Rule 5 -->
+                <div class="glass-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-lg font-semibold text-white mb-2 flex items-center">
+                        <span class="text-[#787AA5] mr-2">#</span> Multiple Accounts
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">Using multiple accounts to evade bans or disrupt the server is not allowed.</p>
+                </div>
+
+                <!-- Rule 6 -->
+                <div class="glass-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-lg font-semibold text-white mb-2 flex items-center">
+                        <span class="text-[#787AA5] mr-2">#</span> Listen to Moderators and Admins
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">Follow instructions given by server staff, and respect their decisions.</p>
+                </div>
+
+                <!-- Rule 7 -->
+                <div class="glass-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-lg font-semibold text-white mb-2 flex items-center">
+                        <span class="text-[#787AA5] mr-2">#</span> No NSFW Content
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">No NSFW content is allowed. Sending links or videos of NSFW content is strictly prohibited.</p>
+                </div>
+
+                <!-- Rule 8 -->
+                <div class="glass-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-lg font-semibold text-white mb-2 flex items-center">
+                        <span class="text-[#787AA5] mr-2">#</span> Follow Discord TOS
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">It is required at all times to follow the official Discord Terms of Service (TOS).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="our-team" class="space-y-6">
+            <div class="flex items-center space-x-3 border-b border-[#585A8A]/40 pb-4">
+                <span class="w-3 h-3 rounded-full bg-[#585A8A] animate-pulse"></span>
+                <h2 class="text-2xl md:text-3xl font-bold text-white tracking-wide">Our Team</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Team Member 1 -->
+                <div class="glass-card rounded-2xl p-8 text-center transition-all duration-300 transform hover:-translate-y-1 group">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-[#585A8A]/30 border-2 border-pink-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-pink-500/20 group-hover:scale-105 transition-transform">
+                        W
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">William</h3>
+                    <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-pink-500/20 text-pink-300 border border-pink-500/40">Chairman</span>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="glass-card rounded-2xl p-8 text-center transition-all duration-300 transform hover:-translate-y-1 group">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-[#585A8A]/30 border-2 border-pink-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-pink-500/20 group-hover:scale-105 transition-transform">
+                        T
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Tariko</h3>
+                    <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-pink-500/20 text-pink-300 border border-pink-500/40">Vice Chairman</span>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="glass-card rounded-2xl p-8 text-center transition-all duration-300 transform hover:-translate-y-1 group">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-[#585A8A]/30 border-2 border-green-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-green-500/20 group-hover:scale-105 transition-transform">
+                        J
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">James</h3>
+                    <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-300 border border-green-500/40">Managing Director</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="ranks" class="space-y-6">
+            <div class="flex items-center space-x-3 border-b border-[#585A8A]/40 pb-4">
+                <span class="w-3 h-3 rounded-full bg-[#585A8A] animate-pulse"></span>
+                <h2 class="text-2xl md:text-3xl font-bold text-white tracking-wide">Ranks</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Ownership (Pink) -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pink-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Ownership</h3>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-pink-500/20 text-pink-300 border border-pink-500/30">OWN</span>
+                    </div>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-pink-400 mr-2"></span> Chairman
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-pink-400 mr-2"></span> Vice Chairman
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Leadership (Green) -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-green-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Leadership</h3>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-green-500/20 text-green-300 border border-green-500/30">LEAD</span>
+                    </div>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 mr-2"></span> Managing Director
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 mr-2"></span> Executive Director
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 mr-2"></span> Director
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 mr-2"></span> Developer
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 mr-2"></span> Assistant Director
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- HR (Red) -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-red-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Higer Ranks</h3>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-red-500/20 text-red-300 border border-red-500/30">HR</span>
+                    </div>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-400 mr-2"></span> Head Corporate
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-400 mr-2"></span> Lead Corporate
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-400 mr-2"></span> Senior Corporate
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-400 mr-2"></span> Corporate
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-400 mr-2"></span> Junior Corporate
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- MR (Yellow) -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-yellow-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Middle Ranks</h3>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">MR</span>
+                    </div>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 mr-2"></span> Corporate Intern
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 mr-2"></span> Lead Supervisor
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 mr-2"></span> Senior Supervisor
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 mr-2"></span> Supervisor
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 mr-2"></span> Junior Supervisor
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- LR (Blue) -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-blue-500 md:col-span-2 lg:col-span-2">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Low Ranks</h3>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30">LR</span>
+                    </div>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Inter Supervisor
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Noted Customer
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Lead Store Security
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Senior Store Security
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Store Security
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Junior Store Security
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Lead Store Colleague
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Senior Store Colleague
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Store Colleague
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Junior Store Colleague
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Trainee
+                        </li>
+                        <li class="flex items-center text-sm text-gray-200 bg-black/20 px-3 py-2 rounded-xl">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span> Customer
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="pt-8 text-center">
+            <a href="http://www.seamartcorporation.qd.je/" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#585A8A] hover:bg-[#474972] rounded-2xl shadow-xl shadow-[#585A8A]/30 transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#787AA5]">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Go Back
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="w-full py-8 text-center text-gray-400 text-sm border-t border-white/5 relative z-10 bg-[#0b0c10]/80 backdrop-blur-md">
+        <div class="max-w-5xl mx-auto px-4">
+            <p>&copy; 2026 SeaMart Corporation. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
